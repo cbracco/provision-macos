@@ -19,8 +19,10 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 
 - [ansible-role-dotfiles][ansible-role-dotfiles] by [@geerlingguy][geerlingguy]
 - [dotfiles][dotfiles-mathiasbynens] by [@mathiasbynens][mathiasbynens]
-- [superlumic][superlumic] by [@roderik][roderik]
 - [mac-ansible][mac-ansible] by [@adamchainz][adamchainz]
+- [mac-dev-playbook][mdp-geerlingguy] by [@geerlingguy][geerlingguy]
+- [mac-dev-playbook][mdp-ricbra] by [@ricbra][ricbra]
+- [superlumic][superlumic] by [@roderik][roderik]
 
 ## [Changelog](CHANGELOG.md)
 
@@ -35,6 +37,9 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [issac-newton-quote]: https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
 [geerlingguy]: https://github.com/geerlingguy
 [mac-ansible]: https://github.com/adamchainz/mac-ansible
+[mdp-ricbra]: https://github.com/ricbra/mac-dev-playbook
+[mdp-geerlingguy]: https://github.com/geerlingguy/mac-dev-playbook
 [macos-sierra]: https://en.wikipedia.org/wiki/MacOS_Sierra
+[ricbra]: https://github.com/ricbra
 [roderik]: https://github.com/roderik
 [superlumic]: https://github.com/superlumic/superlumic
