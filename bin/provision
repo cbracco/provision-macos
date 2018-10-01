@@ -90,6 +90,15 @@ if [[ ! -x /usr/local/bin/python ]]; then
   brew install python
 fi
 
+# Update pip to avoid TLS errors in macOS Sierra 10.12 or older
+# https://stackoverflow.com/a/49748494/100134
+macos_version=$(sw_vers -productVersion)
+if [[ "$macos_version" == 10.13.* ]]; then
+  sudo easy_install pip
+else
+  curl https://bootstrap.pypa.io/get-pip.py | sudo python
+fi
+
 # Install Ansible via pip (better than homebrew, its always up-to-date)
 if ! pip list | grep -F ansible; then
   printStatus "Ansible not detected. Installing Ansible via pip..."
