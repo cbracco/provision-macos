@@ -1,0 +1,13 @@
+- hosts: all
+  connection: local
+  roles:
+    - computername
+    - role: homebrew
+      vars:
+        homebrew_packages:
+          - pv
+          - ssh-copy-id
+          - wget
+        homebrew_cask_packages:
+          - firefox
+          - font-roboto-mono
