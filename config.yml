@@ -58,7 +58,6 @@ homebrew_cask_packages:
   - unrarx
   - utorrent
   - vagrant
-  - virtualbox
   - vlc
   - visual-studio-code
   - xquartz
