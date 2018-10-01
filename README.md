@@ -10,15 +10,20 @@
 
 ## Usage
 
-Clone or download this repository to a local machine, and execute the included bash script by running the following command(s):
+Clone or download this repository to a local machine.
 
 ```bash
 git clone https://github.com/cbracco/provision-macos.git
-cd /path/to/this/directory
+```
+
+Execute the included bash script by running the following command(s):
+
+```bash
+cd /path/to/this/repository
 ./bin/provision
 ```
 
-This script will do the following:
+This bash script does the following:
 
 - Install [XCode CLI tools][xcode-cli-tools]
 - Install [homebrew][homebrew] via ruby/curl ([more info][homebrew])
@@ -66,6 +71,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [geerlingguy]: https://github.com/geerlingguy
 [homebrew]: http://brew.sh
 [mac-ansible]: https://github.com/adamchainz/mac-ansible
+[mathiasbynens]: https://github.com/mathiasbynens
 [mdp-ricbra]: https://github.com/ricbra/mac-dev-playbook
 [mdp-geerlingguy]: https://github.com/geerlingguy/mac-dev-playbook
 [macos-sierra]: https://en.wikipedia.org/wiki/MacOS_Sierra
