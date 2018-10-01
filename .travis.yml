@@ -12,9 +12,17 @@ before_install:
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
 
+install:
+  # Install homebrew
+  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  # Install Python via homebrew
+  - brew install python
+  # Install Ansible via pip
+  - pip install ansible
+
 script:
   # Check playbook syntax
   - "ansible-playbook playbook.yml --syntax-check"
 
-  # Run the full install script
-  - "./bin/provision"
+  # Run the playbook
+  - "travis_wait 30 ansible-playbook playbook.yml"
