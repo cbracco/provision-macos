@@ -1,1 +1,64 @@
 computer_name: "CAB-2018-MBP"
+
+homebrew_taps:
+  - caskroom/cask
+  - caskroom/fonts
+
+homebrew_packages:
+  - ant
+  - bash-completion
+  - coreutils
+  - dnsmasq
+  - git
+  - git-extras
+  - htop-osx
+  - imagemagick
+  - libjpeg
+  - libmemcached
+  - libpng
+  - mysql56
+  - nginx
+  - node
+  - nvm
+  - openssl
+  - postgresql
+  - pre-commit
+  - pv
+  - pwgen
+  - python
+  - python@2
+  - python3
+  - rabbitmq
+  - redis
+  - rsync
+  - siege
+  - sqlite3
+  - ssh-copy-id
+  - watch
+  - wget
+
+homebrew_cask_packages:
+  - alfred
+  - bartender
+  - charles
+  - docker
+  - firefox
+  - font-roboto-mono
+  - google-chrome
+  - imagealpha
+  - imageoptim
+  - lastfm
+  - moom
+  - onepassword
+  - playonmac
+  - sequel-pro
+  - slack
+  - spotify
+  - transmit
+  - unrarx
+  - utorrent
+  - vagrant
+  - virtualbox
+  - vlc
+  - visual-studio-code
+  - xquartz

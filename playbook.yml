@@ -10,3 +10,4 @@
     - config.yml
   roles:
     - computername
+    - homebrew
