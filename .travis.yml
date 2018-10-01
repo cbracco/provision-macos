@@ -1,6 +1,6 @@
 sudo: required
 language: objective-c
-# 10.13 (see https://docs.travis-ci.com/user/osx-ci-environment/#OS-X-Version)
+# 10.13 (https://docs.travis-ci.com/user/osx-ci-environment/#OS-X-Version)
 osx_image: xcode9.3
 
 before_install:
@@ -18,11 +18,10 @@ install:
   # Install Python via homebrew
   - brew install python
   # Install Ansible via pip
-  - sudo pip install ansible
+  - sudo -H pip install ansible
 
 script:
   # Check playbook syntax
   - ansible-playbook playbook.yml --syntax-check
-
   # Run the playbook
   - ansible-playbook playbook.yml
