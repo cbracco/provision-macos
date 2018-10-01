@@ -34,7 +34,6 @@ install:
     else
       curl https://bootstrap.pypa.io/get-pip.py | sudo python
     fi
-  - sudo -H pip install --upgrade setuptools
   # Install Ansible via pip
   - sudo -H pip install ansible
 
