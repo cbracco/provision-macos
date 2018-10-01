@@ -18,7 +18,7 @@ install:
   # Install Python via homebrew
   - brew install python
   # Install Ansible via pip
-  - pip install ansible
+  - sudo pip install ansible
 
 script:
   # Check playbook syntax
