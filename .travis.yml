@@ -26,16 +26,15 @@ install:
   # Install Python via homebrew
   - brew install python
   # Update pip to avoid TLS errors in macOS Sierra 10.12 and older
-  # https://stackoverflow.com/a/49748494
+  # https://stackoverflow.com/a/49748494/100134
   - macos_version=$(sw_vers -productVersion)
   - |
     if [[ "$macos_version" == 10.13.* ]]; then
       sudo easy_install pip
     else
-      # See: https://stackoverflow.com/a/49748494/100134
       curl https://bootstrap.pypa.io/get-pip.py | sudo python
     fi
-  - pip install --upgrade setuptools
+  - sudo -H pip install --upgrade setuptools
   # Install Ansible via pip
   - sudo -H pip install ansible
 
