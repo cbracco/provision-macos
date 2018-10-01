@@ -11,6 +11,7 @@
 Clone or download this repository to a local machine, and execute the included bash script by running the following command(s):
 
 ```bash
+git clone https://github.com/cbracco/provision-macos.git
 cd /path/to/this/directory
 ./bin/provision
 ```
