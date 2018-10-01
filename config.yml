@@ -37,6 +37,8 @@ homebrew_packages:
   - watch
   - wget
 
+homebrew_cask_appdir: /Applications
+
 homebrew_cask_packages:
   - alfred
   - bartender
@@ -47,7 +49,6 @@ homebrew_cask_packages:
   - google-chrome
   - imagealpha
   - imageoptim
-  - lastfm
   - moom
   - onepassword
   - playonmac

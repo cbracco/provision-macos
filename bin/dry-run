@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Test Ansible playbook with "Check Mode" and show differences
+ansible-playbook playbook.yml --check --diff

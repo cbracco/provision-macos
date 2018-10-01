@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# Exit on first error
+set -e
+
+# Set colors
+colorGreen='\e[1;32m' # Green
+colorRed='\e[1;31m'   # Red
+colorOff='\e[0m'      # Off
+
+# Print statuses
+function printStatus {
+  printf "${colorRed} --> ${colorGreen}$1${colorOff}\n" 1>&2
+}
+
+# Print errors
+function printError {
+  printf "${colorRed} --> $1 ${colorOff}\n" 1>&2
+  exit 1
+}
+
+printStatus "Checking if we need to ask for a sudo password..."
+
+sudo -v
+export ANSIBLE_ASK_SUDO_PASS=True
+
+# Extend the default sudo timestamp because this can take a while
+printStatus "Keep-alive: update existing sudo time stamp until we are finished"
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# XCode CLI Tools install script
+# https://github.com/boxcutter/macos/blob/master/script/xcode-cli-tools.sh
+function installXCodeCLT {
+  # Get and install Xcode CLI tools
+  OSX_VERS=$(sw_vers -productVersion | awk -F "." '{print $2}')
+
+  # on 10.9+, we can leverage SUS to get the latest CLI tools
+  if [ "$OSX_VERS" -ge 9 ]; then
+      # create the placeholder file that's checked by CLI updates' .dist code
+      # in Apple's SUS catalog
+      touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+      # find the CLI Tools update
+      PROD=$(softwareupdate -l | grep "\*.*Command Line" | tail -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+      # install it
+      softwareupdate -i "$PROD" --verbose
+      rm /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+
+  # on 10.7/10.8, we instead download from public download URLs, which can be found in
+  # the dvtdownloadableindex:
+  # https://devimages.apple.com.edgekey.net/downloads/xcode/simulators/index-3905972D-B609-49CE-8D06-51ADC78E07BC.dvtdownloadableindex
+  else
+      [ "$OSX_VERS" -eq 7 ] && DMGURL=http://devimages.apple.com.edgekey.net/downloads/xcode/command_line_tools_for_xcode_os_x_lion_april_2013.dmg
+      [ "$OSX_VERS" -eq 8 ] && DMGURL=http://devimages.apple.com.edgekey.net/downloads/xcode/command_line_tools_for_osx_mountain_lion_april_2014.dmg
+
+      TOOLS=clitools.dmg
+      curl "$DMGURL" -o "$TOOLS"
+      TMPMOUNT=`/usr/bin/mktemp -d /tmp/clitools.XXXX`
+      hdiutil attach "$TOOLS" -mountpoint "$TMPMOUNT"
+      if [ "$OSX_VERS" -eq 7 ]; then
+          # using '-allowUntrusted' because Lion CLI tools are so old Apple never built another
+          # package that doesn't have an expired CA cert. (Expired February 15, 2015)
+          installer -pkg "$(find $TMPMOUNT -name '*.mpkg')" -allowUntrusted -target /
+      else
+          installer -pkg "$(find $TMPMOUNT -name '*.mpkg')" -target /
+      fi
+      hdiutil detach "$TMPMOUNT"
+      rm -rf "$TMPMOUNT"
+      rm "$TOOLS"
+      exit
+  fi
+}
+
+# Install XCode CLI Tools
+if [[ ! -f "/Library/Developer/CommandLineTools/usr/bin/clang" ]]; then
+  printStatus "XCode CLI Tools not detected. Installing XCode CLI Tools..."
+  installXCodeCLT
+fi
+
+# Install homebrew
+if [[ ! -x /usr/local/bin/brew ]]; then
+  printStatus "Brew not detected. Installing and updating homebrew..."
+  # Install via ruby/curl one-liner
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Install Python via homebrew (it's better than system Python)
+# https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
+if [[ ! -x /usr/local/bin/python ]]; then
+  printStatus "Python not detected. Installing Python via homebrew..."
+  brew install python
+fi
+
+# Install Ansible via pip (better than homebrew, its always up-to-date)
+if ! pip list | grep -F ansible; then
+  printStatus "Ansible not detected. Installing Ansible via pip..."
+  pip install ansible
+fi
+
+# Run Ansible playbook
+ansible-playbook playbook.yml

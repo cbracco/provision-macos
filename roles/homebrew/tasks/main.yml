@@ -1,11 +1,18 @@
 - name: Install homebrew taps
-  homebrew_tap: tap={{ item }} state=present
+  homebrew_tap:
+    tap: "{{ item }}"
+    state: present
   with_items: "{{ homebrew_taps }}"
 
 - name: Install homebrew packages
-  homebrew: name={{ item }} state=present
+  homebrew:
+    name: "{{ item }}"
+    state: present
   with_items: "{{ homebrew_packages }}"
 
 - name: Install homebrew cask packages
-  homebrew_cask: name={{ item }} state=present
+  homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: "appdir={{ homebrew_cask_appdir }}"
   with_items: "{{ homebrew_cask_packages }}"
