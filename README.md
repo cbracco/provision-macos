@@ -1,6 +1,6 @@
 # provision-macos
 
-[![Build Status](https://travis-ci.org/cbracco/provision-macos.svg?branch=master)](https://travis-ci.org/cbracco/provision-macos)
+[![Build Status](https://travis-ci.org/cbracco/provision-macos.svg?branch=master)][travis-ci-repo]
 
 > Automatically provision a local machine running [macOS Sierra 10.12][macos-sierra] and higher with [Ansible][ansible].
 
@@ -24,7 +24,7 @@ This script will do the following:
 - Install [homebrew][homebrew] via ruby/curl ([more info][homebrew])
 - Install [Python][python] via homebrew ([more info][python-via-homebrew])
 - Install [Ansible][ansible] via pip ([more info][ansible-via-pip])
-- Run the Ansible playbook included in this repository.
+- Run the Ansible playbook included in this repository
 
 ## Testing
 
@@ -34,6 +34,8 @@ Perform a “dry run” of this Ansible playbook by running the following comman
 cd /path/to/directory
 ./bin/dry-run
 ```
+
+This repository is also continuously tested by [Travis-CI][travis-ci-repo].
 
 ## Credits
 
@@ -72,4 +74,5 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [ricbra]: https://github.com/ricbra
 [roderik]: https://github.com/roderik
 [superlumic]: https://github.com/superlumic/superlumic
+[travis-ci-repo]: https://travis-ci.org/cbracco/provision-macos
 [xcode-cli-tools]: https://developer.apple.com/xcode/features

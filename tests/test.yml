@@ -4,6 +4,7 @@
     - computername
     - role: homebrew
       vars:
+        # Override default packages here for quicker test builds
         homebrew_packages:
           - pv
           - ssh-copy-id
