@@ -19,8 +19,8 @@ function printError {
   exit 1
 }
 
+# Check sudo
 printStatus "Checking if we need to ask for a sudo password..."
-
 sudo -v
 export ANSIBLE_ASK_SUDO_PASS=True
 
