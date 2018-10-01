@@ -1,8 +1,8 @@
 computer_name: "CAB-2018-MBP"
 
 homebrew_taps:
-  - caskroom/cask
-  - caskroom/fonts
+  - homebrew/cask
+  - homebrew/fonts
 
 homebrew_packages:
   - ant

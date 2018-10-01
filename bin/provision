@@ -93,7 +93,7 @@ fi
 # Install Ansible via pip (better than homebrew, its always up-to-date)
 if ! pip list | grep -F ansible; then
   printStatus "Ansible not detected. Installing Ansible via pip..."
-  pip install ansible
+  sudo pip install ansible
 fi
 
 # Run Ansible playbook
