@@ -3,6 +3,18 @@
 - include_role:
     name: geerlingguy.dotfiles
 
+# Copies ssh-config file to ~/.ssh/config
+# Handled separately from above because we want to copy it, not symlink it
+- name: Create ~/.ssh directory if it doesn't already exist
+  file:
+    path: "{{ dotfiles_ssh_dir }}"
+    state: directory
+    mode: 0700
+- name: Copy and rename ssh-config file to ~/.ssh/config
+  copy:
+    src: "{{ dotfiles_ssh_config_src }}"
+    dest: "{{ dotfiles_ssh_config_dest }}"
+
 # Applies a number of macOS default settings, including a theme for Terminal.app
 - name: Set macOS defaults
   shell: "{{ dotfiles_home }}/.macos"

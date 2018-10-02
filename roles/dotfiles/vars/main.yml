@@ -14,3 +14,7 @@ dotfiles_files:
   - .macos
   - .profile
   - .vimrc
+
+dotfiles_ssh_dir: "~/.ssh"
+dotfiles_ssh_config_src: "{{ dotfiles_repo_local_destination }}/ssh-config"
+dotfiles_ssh_config_dest: "{{ dotfiles_ssh_dir }}/config"
