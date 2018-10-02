@@ -3,13 +3,11 @@
   roles:
     - role: homebrew
       vars:
-        # Override default packages here for quicker test builds
+        # Only install a few packages for quicker test builds
         homebrew_packages:
-          - pv
           - ssh-copy-id
-          - wget
+        # Make sure to install VSCode so that `vscode` role works correctly
         homebrew_cask_packages:
-          - firefox
-          - font-roboto-mono
+          - visual-studio-code
     - dotfiles
     - vscode
