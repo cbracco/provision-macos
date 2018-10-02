@@ -4,7 +4,6 @@ dotfiles_repo_accept_hostkey: no
 dotfiles_repo_local_destination: "{{ path_dotfiles }}"
 dotfiles_home: "{{ path_home }}"
 dotfiles_files:
-  - .terminal/materialshell-palenight.terminal
   - .bash_aliases
   - .bash_profile
   - .bashrc
