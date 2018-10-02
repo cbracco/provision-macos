@@ -3,13 +3,6 @@
 - include_role:
     name: geerlingguy.dotfiles
 
-- name: Symlink VSCode keybindings and settings files
-  file:
-    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
-    dest: "{{ dotfiles_home }}"
-    state: link
-  with_items: "{{ dotfiles_files }}"
-
 # Installs VSCode extensions via the command line (`code`)
 # Note: There is currently no support for a config file
 - name: Get existing VSCode extensions
