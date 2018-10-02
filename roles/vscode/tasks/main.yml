@@ -1,5 +1,9 @@
 # Symlinks VSCode keybindings and settings files
-- name: Symlink VSCode keybindings and settings files
+- name: Create VSCode user directory if it doesn't already exist
+  path: "{{ vscode_dest }}"
+  state: directory
+  mode: 0755
+- name: Symlink keybindings and settings files to VSCode user directory
   file:
     src: "{{ vscode_src }}/{{ item }}"
     path: "{{ vscode_dest }}/{{ item }}"
@@ -11,7 +15,6 @@
 - name: Get existing VSCode extensions
   shell: "code --list-extensions"
   register: vscode_existing_extensions
-
 - name: Install VSCode extensions
   shell: "code --install-extension {{ item }}"
   when: item not in vscode_existing_extensions.stdout_lines
