@@ -1,0 +1,8 @@
+# Clone and symlink dotfiles from a GitHub repository
+# https://github.com/geerlingguy/ansible-role-dotfiles
+- include_role:
+    name: geerlingguy.dotfiles
+
+# Run additional dotfiles tasks
+- name: Set macOS defaults
+  shell: "{{ dotfiles_home }}/.macos"

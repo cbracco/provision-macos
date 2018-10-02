@@ -7,6 +7,5 @@
 - hosts: all
   connection: local
   roles:
-    - computername
     - homebrew
-    - geerlingguy.dotfiles
+    - dotfiles

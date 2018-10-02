@@ -2,18 +2,3 @@
 name_user: "cbracco"
 path_home: "~"
 path_dev: "{{ path_home }}/Development"
-
-# Override `geerlingguy.dotfiles` default variables
-dotfiles_repo: "https://github.com/cbracco/dotfiles.git"
-dotfiles_repo_accept_hostkey: no
-dotfiles_repo_local_destination: "{{ path_dev }}/dotfiles"
-dotfiles_home: "{{ path_home }}"
-dotfiles_files:
-  - .bash_aliases
-  - .bash_profile
-  - .bashrc
-  - .gitconfig
-  - .gitignore
-  - .inputrc
-  - .profile
-  - .vimrc

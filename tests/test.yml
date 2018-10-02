@@ -1,7 +1,6 @@
 - hosts: all
   connection: local
   roles:
-    - computername
     - role: homebrew
       vars:
         # Override default packages here for quicker test builds
@@ -12,4 +11,4 @@
         homebrew_cask_packages:
           - firefox
           - font-roboto-mono
-    - geerlingguy.dotfiles
+    - dotfiles

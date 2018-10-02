@@ -83,7 +83,7 @@ if [[ ! -x /usr/local/bin/brew ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Install Python via homebrew (it's better than system Python)
+# Install Python via homebrew
 # https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
 if [[ ! -x /usr/local/bin/python ]]; then
   printStatus "Python not detected. Installing Python via homebrew..."
@@ -94,7 +94,8 @@ fi
 # https://stackoverflow.com/a/49748494/100134
 sudo easy_install pip
 
-# Install Ansible via pip (better than homebrew, its always up-to-date)
+# Install Ansible via pip
+# https://serverfault.com/a/562350
 if ! pip list | grep -F ansible; then
   printStatus "Ansible not detected. Installing Ansible via pip..."
   sudo pip install ansible
