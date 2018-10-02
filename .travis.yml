@@ -38,6 +38,8 @@ install:
   - sudo -H pip install ansible
 
 script:
+  # Install requirements
+  - ansible-galaxy install -r requirements.yml
   # Check playbook syntax
   - ansible-playbook tests/test.yml --syntax-check
   # Run the playbook

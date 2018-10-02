@@ -105,5 +105,8 @@ if ! pip list | grep -F ansible; then
   sudo pip install ansible
 fi
 
+# Install Ansible requirements
+ansible-galaxy install -r requirements.yml
+
 # Run Ansible playbook
 ansible-playbook playbook.yml
