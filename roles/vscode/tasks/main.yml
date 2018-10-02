@@ -1,8 +1,9 @@
 # Symlinks VSCode keybindings and settings files
 - name: Create VSCode user directory if it doesn't already exist
-  path: "{{ vscode_dest }}"
-  state: directory
-  mode: 0755
+  file:
+    path: "{{ vscode_dest }}"
+    state: directory
+    mode: 0755
 - name: Symlink keybindings and settings files to VSCode user directory
   file:
     src: "{{ vscode_src }}/{{ item }}"
