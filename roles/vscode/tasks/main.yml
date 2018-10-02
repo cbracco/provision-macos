@@ -4,7 +4,6 @@
     src: "{{ vscode_src }}/{{ item }}"
     path: "{{ vscode_dest }}/{{ item }}"
     state: link
-  become: false
   with_items: "{{ vscode_files }}"
 
 # Installs VSCode extensions via the command line (`code`)
