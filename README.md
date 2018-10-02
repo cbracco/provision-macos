@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/cbracco/provision-macos.svg?branch=master)][travis-ci-repo]
 
-> Automatically provision a local machine running [macOS Sierra 10.12][macos-sierra] and higher with [Ansible][ansible].
+> Automatically provision a local machine running [macOS High Sierra 10.13][macos-high-sierra] and higher with [Ansible][ansible].
 
 ## Requirements
 
-- Mac OSX 10.12 or higher
+- macOS 10.13 or higher
 
 ## Usage
 
@@ -74,7 +74,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [mathiasbynens]: https://github.com/mathiasbynens
 [mdp-ricbra]: https://github.com/ricbra/mac-dev-playbook
 [mdp-geerlingguy]: https://github.com/geerlingguy/mac-dev-playbook
-[macos-sierra]: https://en.wikipedia.org/wiki/MacOS_Sierra
+[macos-high-sierra]: https://en.wikipedia.org/wiki/MacOS_High_Sierra
 [python]: https://www.python.org
 [python-via-homebrew]: https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
 [ricbra]: https://github.com/ricbra
