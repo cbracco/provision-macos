@@ -1,0 +1,22 @@
+# Clones and symlinks VSCode keybindings and settings
+# https://github.com/geerlingguy/ansible-role-dotfiles
+- include_role:
+    name: geerlingguy.dotfiles
+
+- name: Symlink VSCode keybindings and settings files
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+    dest: "{{ dotfiles_home }}"
+    state: link
+  with_items: "{{ dotfiles_files }}"
+
+# Installs VSCode extensions via the command line (`code`)
+# Note: There is currently no support for a config file
+- name: Get existing VSCode extensions
+  shell: "code --list-extensions"
+  register: vscode_existing_extensions
+
+- name: Install VSCode extensions
+  shell: "code --install-extension {{ item }}"
+  when: item not in vscode_existing_extensions.stdout_lines
+  with_items: "{{ vscode_extensions }}"

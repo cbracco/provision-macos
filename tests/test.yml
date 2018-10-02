@@ -12,3 +12,4 @@
           - firefox
           - font-roboto-mono
     - dotfiles
+    - vscode

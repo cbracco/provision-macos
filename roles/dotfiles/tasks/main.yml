@@ -1,8 +1,8 @@
-# Clone and symlink dotfiles from a GitHub repository
+# Clones and symlinks dotfiles
 # https://github.com/geerlingguy/ansible-role-dotfiles
 - include_role:
     name: geerlingguy.dotfiles
 
-# Run additional dotfiles tasks
+# Applies a number of macOS default settings, including a theme for Terminal.app
 - name: Set macOS defaults
   shell: "{{ dotfiles_home }}/.macos"

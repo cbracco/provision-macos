@@ -2,3 +2,4 @@
 name_user: "cbracco"
 path_home: "~"
 path_dev: "{{ path_home }}/Development"
+path_dotfiles: "{{ path_dev }}/dotfiles"

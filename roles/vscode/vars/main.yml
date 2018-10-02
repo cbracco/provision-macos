@@ -1,0 +1,17 @@
+# Override `geerlingguy.dotfiles` default variables
+dotfiles_repo: "https://github.com/cbracco/dotfiles.git"
+dotfiles_repo_accept_hostkey: no
+dotfiles_repo_local_destination: "{{ path_dotfiles }}"
+dotfiles_home: "~/Library/Application Support/Code/User"
+dotfiles_files:
+  - .vscode/keybindings.json
+  - .vscode/settings.json
+
+vscode_extensions:
+  - batisteo.vscode-django
+  - dbaeumer.vscode-eslint
+  - EditorConfig.EditorConfig
+  - Equinusocio.vsc-material-theme
+  - liximomo.sftp
+  - ms-python.python
+  - robinbentley.sass-indented
