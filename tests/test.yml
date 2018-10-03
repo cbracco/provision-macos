@@ -1,8 +1,6 @@
 - hosts: all
   connection: local
   roles:
-    - role: macos
-      tags: ["update"]
     - role: homebrew
       vars:
         # Only install a few packages for quicker test builds
@@ -13,6 +11,5 @@
           - font-roboto-mono
           - visual-studio-code
     - dotfiles
-    - role: macos
-      tags: ["settings"]
+    - macos
     - vscode

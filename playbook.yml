@@ -7,10 +7,7 @@
 - hosts: all
   connection: local
   roles:
-    - role: macos
-      tags: ['update']
     - homebrew
     - dotfiles
-    - role: macos
-      tags: ['settings']
+    - macos
     - vscode
