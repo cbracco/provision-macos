@@ -51,6 +51,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 
 - [ansible-role-dotfiles][ansible-role-dotfiles] by [@geerlingguy][geerlingguy]
 - [dotfiles][dotfiles-mathiasbynens] by [@mathiasbynens][mathiasbynens]
+- [osxstrap][osxstrap] by [@jeremyltn][jeremyltn]
 - [mac-ansible][mac-ansible] by [@adamchainz][adamchainz]
 - [mac-dev-playbook][mdp-geerlingguy] by [@geerlingguy][geerlingguy]
 - [mac-dev-playbook][mdp-ricbra] by [@ricbra][ricbra]
@@ -70,11 +71,13 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [issac-newton-quote]: https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
 [geerlingguy]: https://github.com/geerlingguy
 [homebrew]: http://brew.sh
+[jeremyltn]: https://github.com/jeremyltn
 [mac-ansible]: https://github.com/adamchainz/mac-ansible
 [mathiasbynens]: https://github.com/mathiasbynens
 [mdp-ricbra]: https://github.com/ricbra/mac-dev-playbook
 [mdp-geerlingguy]: https://github.com/geerlingguy/mac-dev-playbook
 [macos-high-sierra]: https://en.wikipedia.org/wiki/MacOS_High_Sierra
+[osxstrap]: https://github.com/osxstrap
 [python]: https://www.python.org
 [python-via-homebrew]: https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
 [ricbra]: https://github.com/ricbra

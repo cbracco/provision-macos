@@ -3,3 +3,38 @@
 # https://github.com/cbracco/dotfiles/blob/master/.macos
 - name: Apply macOS default settings, computer name, and a theme for Terminal.app
   shell: "{{ dotfiles_home }}/.macos"
+
+# Sets macOS user picture
+# https://github.com/osxstrap/ansible-osx-user-picture/blob/devel/tasks/user_picture.yml
+- name: Create user picture directory
+  file:
+    path: "{{ macos_user_picture_directory }}"
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Copy picture to user picture directory
+  copy:
+    src: "{{ macos_user_picture_file }}"
+    dest: "{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}"
+    mode: 0644
+  become: true
+  register: copy_result
+
+- name: Delete HEX picture data
+  command: dscl . delete /Users/"{{ name_user }}" JPEGPhoto
+  always_run: yes
+  become: true
+  when: '"No such key" not in "{{ dscl_read_jpegphoto_result.stderr }}"'
+
+- name: Delete existing user account picture
+  command: dscl . delete /Users/"{{ name_user }}" Picture
+  always_run: yes
+  become: true
+  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
+
+- name: Add user account picture
+  command: dscl . create /Users/"{{ name_user }}" Picture "{{ macos_user_picture_directory }}/{{ osx_user_picture_file | basename }}"
+  always_run: yes
+  become: true
+  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
