@@ -4,9 +4,11 @@
 # -a = all appropriate updates
 - name: Check for and install any macOS software updates
   shell: "softwareupdate -iva"
-  tags: ["software-update"]
+  tags: ["update"]
 
-# Applies a number of macOS default settings, including a theme for Terminal.app
-- name: Set macOS defaults
+# Applies a number of macOS default settings, including computer name and a theme
+# for Terminal.app
+# https://github.com/cbracco/dotfiles/blob/master/.macos
+- name: Apply macOS default settings, computer name, and a theme for Terminal.app
   shell: "{{ dotfiles_home }}/.macos"
   tags: ["settings"]
