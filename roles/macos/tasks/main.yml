@@ -16,7 +16,7 @@
 - name: Copy picture to user picture directory
   copy:
     src: "{{ macos_user_picture_file }}"
-    dest: "{{ macos_user_picture_directory }}/{{ macos_user_picture_file }}"
+    dest: "{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}"
     mode: 0644
   become: true
   register: copy_result
@@ -39,9 +39,9 @@
 - name: Delete existing user account picture
   command: dscl . delete /Users/"{{ name_user }}" Picture
   become: true
-  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
+  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
 
 - name: Add user account picture
   command: dscl . create /Users/"{{ name_user }}" Picture "{{ macos_user_picture_directory }}/{{ osx_user_picture_file }}"
   become: true
-  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
+  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
