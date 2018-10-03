@@ -1,0 +1,12 @@
+# Installs latest macOS software updates
+# -i = install
+# -v = verbose mode
+# -a = all appropriate updates
+- name: Check for and install any macOS software updates
+  shell: "softwareupdate -iva"
+  tags: ["software-update"]
+
+# Applies a number of macOS default settings, including a theme for Terminal.app
+- name: Set macOS defaults
+  shell: "{{ dotfiles_home }}/.macos"
+  tags: ["settings"]

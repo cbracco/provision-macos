@@ -1,6 +1,8 @@
 - hosts: all
   connection: local
   roles:
+    - role: macos
+      tags: ["update"]
     - role: homebrew
       vars:
         # Only install a few packages for quicker test builds
@@ -8,6 +10,9 @@
           - ssh-copy-id
         # Make sure to install VSCode so that `vscode` role works correctly
         homebrew_cask_packages:
+          - font-roboto-mono
           - visual-studio-code
     - dotfiles
+    - role: macos
+      tags: ["settings"]
     - vscode

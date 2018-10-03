@@ -7,9 +7,10 @@
 - hosts: all
   connection: local
   roles:
-    - role: homebrew
-      tags: ['homebrew']
-    - role: dotfiles
-      tags: ['dotfiles']
-    - role: vscode
-      tags: ['vscode']
+    - role: macos
+      tags: ['update']
+    - homebrew
+    - dotfiles
+    - role: macos
+      tags: ['settings']
+    - vscode

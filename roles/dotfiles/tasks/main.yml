@@ -14,7 +14,3 @@
   copy:
     src: "{{ dotfiles_ssh_config_src }}"
     dest: "{{ dotfiles_ssh_config_dest }}"
-
-# Applies a number of macOS default settings, including a theme for Terminal.app
-- name: Set macOS defaults
-  shell: "{{ dotfiles_home }}/.macos"
