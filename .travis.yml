@@ -14,5 +14,5 @@ before_install:
   - sudo rm -rf /usr/local/bin/brew
 
 script:
-  # Install requirements & run the playbook
-  - ./bin/provision
+  # Run the Ansible test playbook
+  - ./bin/provision -t

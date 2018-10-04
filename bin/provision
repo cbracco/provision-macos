@@ -85,22 +85,38 @@ if [[ ! -x /usr/local/bin/python ]]; then
   brew install python
 fi
 
-# Update pip
+# Install and upgrade pip
 # https://stackoverflow.com/a/49748494/100134
 sudo easy_install pip
+pip install --upgrade pip
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
 if ! pip list | grep -F ansible; then
   printStatus "Ansible not detected. Installing Ansible via pip..."
-  sudo pip install ansible
+  sudo -H pip install ansible
 fi
 
 # Install Ansible requirements
 ansible-galaxy install -r requirements.yml
 
-# Check playbook syntax
-ansible-playbook tests/test.yml --syntax-check
-
 # Run Ansible playbook
-ansible-playbook playbook.yml
+if [[ $1 == "" ]]; then
+    ansible-playbook playbook.yml
+    exit
+else
+    while getopts ":t" opt; do
+        case $opt in
+            t)
+                # `-t` flag checks syntax and runs the test playbook
+                ansible-playbook playbook.yml --syntax-check
+                ansible-playbook tests/test.yml
+                ;;
+            \?)
+                # Throw error for invalid flags
+                echo "Invalid option: -$OPTARG" >&2
+                exit 1
+                ;;
+        esac
+    done
+fi
