@@ -12,6 +12,11 @@
   loop: "{{ homebrew_packages }}"
   tags: ['homebrew']
 
+- name: Verify that PHP is now running from brew package
+  shell: which python
+  register: which_python
+  failed_when: 'not "/usr/local/bin/python" in which_python.stderr'
+
 - name: Install homebrew cask packages
   homebrew_cask:
     name: "{{ item }}"
