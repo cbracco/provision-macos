@@ -1,3 +1,7 @@
-macos_user_picture_file: "files/Me.jpg"
+macos_user_picture_file: "files/UserPicture.jpg"
 macos_user_picture_file_basename: "{{ macos_user_picture_file | basename }}"
 macos_user_picture_directory: "/Library/User Pictures/Users"
+
+macos_desktop_bg_file: "files/DesktopBackground.jpg"
+macos_desktop_bg_file_basename: "{{ macos_desktop_bg_file | basename }}"
+macos_desktop_bg_directory: "/Library/Desktop Pictures/Users"
