@@ -88,6 +88,7 @@ fi
 # Install and upgrade pip
 # https://stackoverflow.com/a/49748494/100134
 sudo easy_install pip
+sudo -H pip install --upgrade pip
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
