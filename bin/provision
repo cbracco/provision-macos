@@ -88,7 +88,6 @@ fi
 # Install and upgrade pip
 # https://stackoverflow.com/a/49748494/100134
 sudo easy_install pip
-pip install --upgrade pip
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
@@ -101,6 +100,7 @@ fi
 ansible-galaxy install -r requirements.yml
 
 # Run Ansible playbook
+# https://archive.is/TRzn4
 if [[ $1 == "" ]]; then
     ansible-playbook playbook.yml
     exit
