@@ -2,14 +2,14 @@
   homebrew_tap:
     tap: "{{ item }}"
     state: present
-  with_items: "{{ homebrew_taps }}"
+  loop: "{{ homebrew_taps }}"
   tags: ['homebrew']
 
 - name: Install homebrew packages
   homebrew:
     name: "{{ item }}"
     state: present
-  with_items: "{{ homebrew_packages }}"
+  loop: "{{ homebrew_packages }}"
   tags: ['homebrew']
 
 - name: Install homebrew cask packages
@@ -17,5 +17,5 @@
     name: "{{ item }}"
     state: present
     install_options: "appdir={{ homebrew_cask_appdir }}"
-  with_items: "{{ homebrew_cask_packages }}"
+  loop: "{{ homebrew_cask_packages }}"
   tags: ['homebrew']

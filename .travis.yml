@@ -13,21 +13,6 @@ before_install:
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
 
-install:
-  # Install homebrew
-  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  # Install Python via homebrew
-  - brew install python
-  # Update pip
-  # https://stackoverflow.com/a/49748494/100134
-  - sudo easy_install pip
-  # Install Ansible via pip
-  - sudo -H pip install ansible
-
 script:
-  # Install requirements
-  - ansible-galaxy install -r requirements.yml
-  # Check playbook syntax
-  - ansible-playbook tests/test.yml --syntax-check
-  # Run the playbook
-  - ansible-playbook tests/test.yml
+  # Install requirements & run the playbook
+  - sudo ./bin/provision

@@ -19,11 +19,6 @@ function printError {
   exit 1
 }
 
-# Check sudo
-printStatus "Checking if we need to ask for a sudo password..."
-sudo -v
-export ANSIBLE_ASK_SUDO_PASS=True
-
 # Extend the default sudo timestamp because this can take a while
 printStatus "Keep-alive: update existing sudo time stamp until we are finished"
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
@@ -103,6 +98,9 @@ fi
 
 # Install Ansible requirements
 ansible-galaxy install -r requirements.yml
+
+# Check playbook syntax
+ansible-playbook tests/test.yml --syntax-check
 
 # Run Ansible playbook
 ansible-playbook playbook.yml
