@@ -5,11 +5,12 @@
       vars:
         # Only install a few packages for quicker test builds
         homebrew_packages:
-          - ssh-copy-id
+          - python
         # Make sure to install VSCode so that `vscode` role works correctly
         homebrew_cask_packages:
           - font-roboto-mono
           - visual-studio-code
     - dotfiles
     - macos
+    - pip
     - vscode
