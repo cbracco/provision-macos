@@ -3,45 +3,60 @@
 # https://github.com/cbracco/dotfiles/blob/master/.macos
 - name: Apply macOS default settings, computer name, and a theme for Terminal.app
   shell: "{{ dotfiles_home }}/.macos"
+  tags: ["macos"]
 
 # Sets macOS user picture
 # https://github.com/osxstrap/ansible-osx-user-picture/blob/devel/tasks/user_picture.yml
-- name: Create user picture directory
+- name: Create macOS user picture directory
   file:
     path: "{{ macos_user_picture_directory }}"
     state: directory
     mode: 0755
-  become: true
+  # check_mode: no
+  become: yes
+  tags: ["macos"]
 
-- name: Copy picture to user picture directory
+- name: Copy picture to macOS user picture directory
   copy:
     src: "{{ macos_user_picture_file }}"
     dest: "{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}"
     mode: 0644
-  become: true
+  become: yes
+  # check_mode: no
   register: copy_result
+  tags: ["macos"]
 
-- name: Read current value of JPEGPhoto
+- name: Read current value of JPEGPhoto for macOS user
   shell: dscl . read /Users/"{{ ansible_ssh_user }}" JPEGPhoto
   register: "dscl_read_jpegphoto_result"
+  # check_mode: no
   changed_when: false
+  tags: ["macos"]
 
-- name: Read current value of Picture
+- name: Read current value of Picture for macOS user
   shell: dscl . read /Users/"{{ ansible_ssh_user }}" Picture
   register: "dscl_read_picture_result"
+  # check_mode: no
   changed_when: false
+  tags: ["macos"]
 
-- name: Delete HEX picture data
+- name: Delete HEX picture data for macOS user
   shell: dscl . delete /Users/"{{ ansible_ssh_user }}" JPEGPhoto
-  become: true
-  when: '"No such key" not in "{{ dscl_read_jpegphoto_result.stderr }}"'
+  become: yes
+  # check_mode: no
+  when: '"No such key" not in dscl_read_jpegphoto_result.stderr'
+  tags: ["macos"]
 
-- name: Delete existing user account picture
+- name: Delete existing macOS user account picture
   shell: dscl . delete /Users/"{{ ansible_ssh_user }}" Picture
-  become: true
-  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
+  become: yes
+  # check_mode: no
+  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}" in dscl_read_picture_result.stdout and copy_result.changed == false)'
+  tags: ["macos"]
 
-- name: Add user account picture
-  shell: dscl . create /Users/"{{ ansible_ssh_user }}" Picture "{{ macos_user_picture_directory }}/{{ osx_user_picture_file }}"
-  become: true
-  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
+- name: Add new macOS user account picture
+  shell: dscl . create /Users/"{{ ansible_ssh_user }}" Picture "{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}"
+  # check_mode: no
+  become: yes
+  when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}" in dscl_read_picture_result.stdout and copy_result.changed == false)'
+  tags: ["macos"]
