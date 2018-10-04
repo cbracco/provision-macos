@@ -22,26 +22,26 @@
   register: copy_result
 
 - name: Read current value of JPEGPhoto
-  command: dscl . read /Users/"{{ name_user }}" JPEGPhoto
+  shell: dscl . read /Users/"{{ ansible_ssh_user }}" JPEGPhoto
   register: "dscl_read_jpegphoto_result"
   changed_when: false
 
 - name: Read current value of Picture
-  command: dscl . read /Users/"{{ name_user }}" Picture
+  shell: dscl . read /Users/"{{ ansible_ssh_user }}" Picture
   register: "dscl_read_picture_result"
   changed_when: false
 
 - name: Delete HEX picture data
-  command: dscl . delete /Users/"{{ name_user }}" JPEGPhoto
+  shell: dscl . delete /Users/"{{ ansible_ssh_user }}" JPEGPhoto
   become: true
   when: '"No such key" not in "{{ dscl_read_jpegphoto_result.stderr }}"'
 
 - name: Delete existing user account picture
-  command: dscl . delete /Users/"{{ name_user }}" Picture
+  shell: dscl . delete /Users/"{{ ansible_ssh_user }}" Picture
   become: true
   when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
 
 - name: Add user account picture
-  command: dscl . create /Users/"{{ name_user }}" Picture "{{ macos_user_picture_directory }}/{{ osx_user_picture_file }}"
+  shell: dscl . create /Users/"{{ ansible_ssh_user }}" Picture "{{ macos_user_picture_directory }}/{{ osx_user_picture_file }}"
   become: true
   when: 'not ("{{ macos_user_picture_directory }}/{{ macos_user_picture_file | basename }}" in "{{ dscl_read_picture_result.stdout }}" and copy_result.changed == false)'
