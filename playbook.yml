@@ -8,9 +8,9 @@
   connection: local
   roles:
     - homebrew
-    - pip
     - dotfiles
     - macos
+    - pip
     - ruby
     - node
     - vscode

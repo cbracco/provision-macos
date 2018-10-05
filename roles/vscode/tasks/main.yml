@@ -1,4 +1,4 @@
-# Symlinks VSCode keybindings and settings files
+# Symlinks VSCode keybindings and settings files from dotfiles repo
 - name: Create VSCode user directory if it doesn't already exist
   file:
     path: "{{ vscode_dest }}"

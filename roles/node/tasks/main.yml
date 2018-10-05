@@ -1,6 +1,7 @@
 # Installs Node Version Manager (nvm)
 # The script clones the nvm repository to ~/.nvm and adds the source line to your
 # profile (~/.bash_profile, ~/.zshrc, ~/.profile, or ~/.bashrc)
+# https://github.com/creationix/nvm
 - name: Install Node Version Manager (nvm)
   shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
@@ -11,5 +12,6 @@
     state: "{{ item.state|default('present') }}"
     version: "{{ item.version|default(omit) }}"
     executable: "{{ item.executable|default(omit) }}"
-  with_items: "{{ npm_packages }}"
+    global: "{{ item.global|default('yes') }}"
+  loop: "{{ npm_packages }}"
   tags: ["node"]

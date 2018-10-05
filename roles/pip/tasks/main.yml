@@ -5,5 +5,5 @@
     state: "{{ item.state|default('present') }}"
     version: "{{ item.version|default(omit) }}"
     executable: "{{ item.executable|default(omit) }}"
-  with_items: "{{ pip_packages }}"
+  loop: "{{ pip_packages }}"
   tags: ["pip"]
