@@ -6,6 +6,8 @@
         # Only install a few packages for quicker test builds
         homebrew_packages:
           - python
+          - python@2
+          - python3
           - ruby
         # Make sure to install VSCode so that `vscode` role works correctly
         homebrew_cask_packages:
