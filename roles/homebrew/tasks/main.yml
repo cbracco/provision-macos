@@ -19,7 +19,7 @@
 - name: Verify that PHP is now running from brew package
   shell: which python
   register: which_python
-  failed_when: 'not "/usr/local/bin/python" in which_python.stderr'
+  failed_when: 'not "/usr/local/bin/python" in which_python.stdout'
 
 - name: Install homebrew cask packages
   homebrew_cask:
