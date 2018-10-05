@@ -10,7 +10,7 @@
 
 ## Usage
 
-Clone or download this repository to a local machine.
+Clone or download this repository to a local machine:
 
 ```bash
 git clone https://github.com/cbracco/provision-macos.git
@@ -23,25 +23,43 @@ cd /path/to/this/repository
 sudo ./bin/provision
 ```
 
-This bash script does the following:
+It does the following:
 
 - Installs [XCode CLI tools][xcode-cli-tools]
 - Installs [homebrew][homebrew] via ruby/curl ([more info][homebrew])
 - Installs [Python][python] via homebrew ([more info][python-via-homebrew])
-- Installs and upgrade [pip][pip]
+- Installs and upgrades [pip][pip]
 - Installs [Ansible][ansible] via pip ([more info][ansible-via-pip])
 - Runs the Ansible playbook included in this repository
 
 ## Testing
 
-This repository is continuously tested by [Travis-CI][travis-ci-repo].
+This project is continuously tested by [Travis-CI][travis-ci-repo], which runs a slightly modified “test” version of the included Ansible playbook.
 
-You can perform a “dry run” of the included Ansible playbook by running the following command(s):
+In addition, you can check the syntax of the included Ansible playbook by running the following command(s):
+
+```bash
+cd /path/to/directory
+ansible-playbook playbook.yml --syntax-check
+```
+
+You can also perform a “dry run” of the included Ansible playbook by running the following command(s):
 
 ```bash
 cd /path/to/directory
 ansible-playbook playbook.yml --check
 ```
+
+Learn more about [“Check Mode” in Ansible][ansible-check-mode].
+
+You can also perform a “dry run” of specific roles in the included Ansible playbook by running the following command(s):
+
+```bash
+cd /path/to/directory
+ansible-playbook playbook.yml --check --tags=homebrew,pip
+```
+
+Learn more about [Tags in Ansible][ansible-tags].
 
 ## Credits
 
@@ -64,7 +82,9 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 
 [adamchainz]: https://github.com/adamchainz
 [ansible]: https://www.ansible.com
+[ansible-check-mode]: https://docs.ansible.com/ansible/2.5/user_guide/playbooks_checkmode.html
 [ansible-role-dotfiles]: https://github.com/geerlingguy/ansible-role-dotfiles
+[ansible-tags]: https://docs.ansible.com/ansible/devel/user_guide/playbooks_tags.html
 [ansible-via-pip]: https://serverfault.com/a/562350
 [cbracco]: https://chrisbracco.com
 [contributors]: https://github.com/cbracco/provision-localhost/graphs/contributors
