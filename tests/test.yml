@@ -1,5 +1,5 @@
-# Overriding some vars here so we only install packages necessary for testing
-# Speeds up the tests a bit by not having to install every package
+# Test playbook is the same as the default, but only installs necessary packages
+# for faster builds
 - hosts: all
   connection: local
   roles:
@@ -14,18 +14,18 @@
         homebrew_cask_packages:
           - font-roboto-mono
           - visual-studio-code
+    - dotfiles
+    - macos
     - role: pip
       vars:
         pip_packages:
           - virtualenv
           - virtualenvwrapper
-    - dotfiles
-    - macos
-    - name: ruby
+    - role: ruby
       vars:
         gem_packages:
           - bundler
-    - name: node
+    - role: node
       vars:
         npm_packages:
           - eslint

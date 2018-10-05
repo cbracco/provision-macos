@@ -4,6 +4,8 @@
 # https://github.com/creationix/nvm
 - name: Install Node Version Manager (nvm)
   shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  args:
+    warn: no
 
 # Installs global npm packages
 - name: Install global npm packages
