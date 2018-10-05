@@ -59,6 +59,7 @@ homebrew_cask_packages:
   - slack
   - spotify
   - transmit
+  - tunnelblick
   - unrarx
   - utorrent
   - vagrant
@@ -68,3 +69,4 @@ homebrew_cask_packages:
   - vlc
   - visual-studio-code
   - xquartz
+  - zoomus
