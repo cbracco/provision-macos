@@ -2,11 +2,11 @@
 
 [![Build Status](https://travis-ci.org/cbracco/provision-macos.svg?branch=master)][travis-ci-repo]
 
-> Automatically provision a local machine running [macOS High Sierra 10.13][macos-high-sierra] and higher with [Ansible][ansible].
+> Automatically provision a local machine running [macOS High Sierra 10.13][macos-high-sierra] or higher with [Ansible][ansible].
 
 ## Requirements
 
-- macOS 10.13 or higher
+- macOS High Sierra 10.13 or higher
 
 ## Usage
 
