@@ -85,10 +85,11 @@ if [[ ! -x /usr/local/bin/python ]]; then
   brew install python
 fi
 
-# Install and upgrade pip
+# Install and upgrade pip, and install virtualenv
 # https://stackoverflow.com/a/49748494/100134
 sudo easy_install pip
 sudo -H pip install --upgrade pip
+sudo easy_install virtualenv
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
@@ -101,11 +102,11 @@ fi
 ansible-galaxy install -r requirements.yml
 
 # Run Ansible playbook
-# https://archive.is/TRzn4
 if [[ $1 == "" ]]; then
     ansible-playbook playbook.yml
     exit
 else
+    # More info on getopts: https://archive.is/TRzn4
     while getopts ":t" opt; do
         case $opt in
             t)

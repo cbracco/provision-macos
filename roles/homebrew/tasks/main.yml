@@ -7,8 +7,12 @@
 
 - name: Install homebrew packages
   homebrew:
-    name: "{{ item }}"
-    state: present
+    install_options: "{{ item.install_options|default(omit) }}"
+    name: "{{ item.name|default(item) }}"
+    path: "{{ item.path|default(omit) }}"
+    state: "{{ item.state|default('present') }}"
+    update_homebrew: "{{ item.update_homebrew|default(omit) }}"
+    upgrade_all: "{{ item.upgrade_all|default(omit) }}"
   loop: "{{ homebrew_packages }}"
   tags: ['homebrew']
 

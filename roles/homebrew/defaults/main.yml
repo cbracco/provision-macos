@@ -28,11 +28,16 @@ homebrew_packages:
   - rabbitmq
   - redis
   - rsync
+  - ruby
+  - ruby-build
+  - ruby-install
   - siege
   - sqlite3
   - ssh-copy-id
   - watch
   - wget
+  - name: yarn
+    install_options: without-node
 
 homebrew_cask_appdir: /Applications
 
@@ -47,7 +52,7 @@ homebrew_cask_packages:
   - google-drive-file-stream
   - imagealpha
   - imageoptim
-  - moom
+  # - moom
   - onepassword
   - playonmac
   - sequel-pro
