@@ -9,6 +9,8 @@ vscode_extensions:
   - dbaeumer.vscode-eslint
   - EditorConfig.EditorConfig
   - Equinusocio.vsc-material-theme
+  - formulahendry.auto-close-tag
+  - formulahendry.auto-rename-tag
   - liximomo.sftp
   - ms-python.python
   - robinbentley.sass-indented
