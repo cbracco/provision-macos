@@ -20,7 +20,7 @@ Execute the included bash script by running the following command(s):
 
 ```bash
 cd /path/to/this/repository
-./bin/provision
+sudo ./bin/provision
 ```
 
 This bash script does the following:
