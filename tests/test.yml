@@ -1,9 +1,10 @@
+# Overriding some vars here so we only install packages necessary for testing
+# Speeds up the tests a bit by not having to install every package
 - hosts: all
   connection: local
   roles:
     - role: homebrew
       vars:
-        # Only install packages necessary for testing
         homebrew_packages:
           - python
           - python@2
@@ -12,8 +13,19 @@
         homebrew_cask_packages:
           - font-roboto-mono
           - visual-studio-code
+    - role: pip
+      vars:
+        pip_packages:
+          - virtualenv
+          - virtualenvwrapper
     - dotfiles
     - macos
-    - pip
-    - ruby
+    - name: ruby
+      vars:
+        gem_packages:
+          - bundler
+    - name: node
+      vars:
+        npm_packages:
+          - eslint
     - vscode

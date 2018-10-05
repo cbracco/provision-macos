@@ -3,6 +3,7 @@ homebrew_taps:
 
 homebrew_packages:
   - ant
+  - bash
   - bash-completion
   - coreutils
   - dnsmasq
@@ -16,7 +17,6 @@ homebrew_packages:
   - mysql56
   - nginx
   - node
-  - nvm
   - openssl
   - postgresql
   - pre-commit
@@ -26,6 +26,7 @@ homebrew_packages:
   - python@2
   - python3
   - rabbitmq
+  - rbenv
   - redis
   - rsync
   - ruby

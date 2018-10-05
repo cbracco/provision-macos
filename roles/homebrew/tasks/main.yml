@@ -16,6 +16,12 @@
   loop: "{{ homebrew_packages }}"
   tags: ['homebrew']
 
+# Sets shell to bash downloaded by homebrew
+- name: Set shell to bash downloaded by homebrew
+  shell: |
+    echo /usr/local/bin/bash >> /etc/shells
+    chsh -s /usr/local/bin/bash
+
 - name: Verify that PHP is now running from brew package
   shell: which python
   register: which_python

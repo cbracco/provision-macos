@@ -1,0 +1,5 @@
+npm_packages:
+  - eslint
+  - grunt-cli
+  - gulp-cli
+  - yo

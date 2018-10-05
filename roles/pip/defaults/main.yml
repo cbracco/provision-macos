@@ -1,5 +1,5 @@
 pip_packages:
-  - name: pygments
-  - name: virtualenv
-  - name: virtualenvwrapper
-  - name: youtube-dl
+  - pygments
+  - virtualenv
+  - virtualenvwrapper
+  - youtube-dl
