@@ -85,11 +85,10 @@ if [[ ! -x /usr/local/bin/python ]]; then
   brew install python
 fi
 
-# Install and upgrade pip, and install virtualenv
+# Install and upgrade pip
 # https://stackoverflow.com/a/49748494/100134
 sudo easy_install pip
 sudo -H pip install --upgrade pip
-sudo easy_install virtualenv
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350

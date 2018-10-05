@@ -25,22 +25,23 @@ cd /path/to/this/repository
 
 This bash script does the following:
 
-- Install [XCode CLI tools][xcode-cli-tools]
-- Install [homebrew][homebrew] via ruby/curl ([more info][homebrew])
-- Install [Python][python] via homebrew ([more info][python-via-homebrew])
-- Install [Ansible][ansible] via pip ([more info][ansible-via-pip])
-- Run the Ansible playbook included in this repository
+- Installs [XCode CLI tools][xcode-cli-tools]
+- Installs [homebrew][homebrew] via ruby/curl ([more info][homebrew])
+- Installs [Python][python] via homebrew ([more info][python-via-homebrew])
+- Installs and upgrade [pip][pip]
+- Installs [Ansible][ansible] via pip ([more info][ansible-via-pip])
+- Runs the Ansible playbook included in this repository
 
 ## Testing
 
-Perform a “dry run” of this Ansible playbook by running the following command(s):
+This repository is continuously tested by [Travis-CI][travis-ci-repo].
+
+You can perform a “dry run” of the included Ansible playbook by running the following command(s):
 
 ```bash
 cd /path/to/directory
-./bin/dry-run
+ansible-playbook playbook.yml --check
 ```
-
-This repository is also continuously tested by [Travis-CI][travis-ci-repo].
 
 ## Credits
 
@@ -78,6 +79,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [mdp-geerlingguy]: https://github.com/geerlingguy/mac-dev-playbook
 [macos-high-sierra]: https://en.wikipedia.org/wiki/MacOS_High_Sierra
 [osxstrap]: https://github.com/osxstrap
+[pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org
 [python-via-homebrew]: https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
 [ricbra]: https://github.com/ricbra
