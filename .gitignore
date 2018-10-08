@@ -4,6 +4,7 @@
 ### Ansible ###
 *.retry
 roles/geerlingguy.dotfiles
+vault_password
 
 ### macOS ###
 # General

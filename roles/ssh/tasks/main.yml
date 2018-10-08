@@ -12,10 +12,16 @@
     dest: "{{ ssh_config_dest }}"
 
 # Creates an SSH key for the current user if one doesn't exist
-- name: Create a 2048-bit SSH key for user in ~/.ssh/id_rsa
+# Requires Ansible Vault decryption
+- name: Create a 4096-bit SSH key for user in ~/.ssh/id_rsa
   user:
     name: "{{ ansible_ssh_user }}"
     generate_ssh_key: yes
-    ssh_key_bits: 2048
+    ssh_key_bits: 4096
     ssh_key_file: "{{ ssh_key_file }}"
-    ssh_key_comment: "{{ ssh_key_file_comment }}"
+    ssh_key_comment: "{{ ssh_key_comment }}"
+    ssh_key_passphrase: "{{ ssh_key_passphrase|default(omit) }}"
+
+# Adds id_rsa to ssh-agent
+- name: Add id_rsa to ssh-agent
+  shell: "ssh-add -K {{ ssh_key_file }}"
