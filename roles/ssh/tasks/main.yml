@@ -13,6 +13,10 @@
 
 # Creates an SSH key for the current user if one doesn't exist
 # Requires Ansible Vault decryption
+- name: Only include SSH passphrase when not in test mode.
+  include_vars: vars/passphrase.yml
+  when: not test_mode
+
 - name: Create a 4096-bit SSH key for user in ~/.ssh/id_rsa
   user:
     name: "{{ ansible_ssh_user }}"

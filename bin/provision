@@ -111,7 +111,7 @@ else
             t)
                 # `-t` flag checks syntax and runs the test playbook
                 ansible-playbook playbook.yml --syntax-check
-                ansible-playbook tests/test.yml
+                ansible-playbook tests/test.yml --extra-vars "{test_mode: True}"
                 ;;
             \?)
                 # Throw error for invalid flags
