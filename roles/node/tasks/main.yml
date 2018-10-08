@@ -16,4 +16,3 @@
     executable: "{{ item.executable|default(omit) }}"
     global: "{{ item.global|default('yes') }}"
   loop: "{{ npm_packages }}"
-  tags: ["node"]

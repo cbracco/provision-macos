@@ -7,10 +7,19 @@
 - hosts: all
   connection: local
   roles:
-    - homebrew
-    - dotfiles
-    - macos
-    - pip
-    - ruby
-    - node
-    - vscode
+    - role: homebrew
+      tags: ["homebrew"]
+    - role: dotfiles
+      tags: ["dotfiles"]
+    - role: ssh
+      tags: ["ssh"]
+    - role: macos
+      tags: ["macos"]
+    - role: pip
+      tags: ["pip"]
+    - role: ruby
+      tags: ["ruby"]
+    - role: node
+      tags: ["node"]
+    - role: vscode
+      tags: ["vscode"]

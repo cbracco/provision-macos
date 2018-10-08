@@ -1,0 +1,5 @@
+ssh_dir: "~/.ssh"
+ssh_config_src: "{{ path_dotfiles }}/ssh-config"
+ssh_config_dest: "{{ ssh_dir }}/config"
+ssh_key_file: "{{ ssh_dir }}/id_rsa"
+ssh_key_file_comment: "{{ name_computer }}"

@@ -6,4 +6,3 @@
     version: "{{ item.version|default(omit) }}"
     executable: "{{ item.executable|default(omit) }}"
   loop: "{{ gem_packages }}"
-  tags: ["ruby"]

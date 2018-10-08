@@ -3,7 +3,6 @@
     tap: "{{ item }}"
     state: present
   loop: "{{ homebrew_taps }}"
-  tags: ['homebrew']
 
 - name: Install homebrew packages
   homebrew:
@@ -14,7 +13,6 @@
     update_homebrew: "{{ item.update_homebrew|default(omit) }}"
     upgrade_all: "{{ item.upgrade_all|default(omit) }}"
   loop: "{{ homebrew_packages }}"
-  tags: ['homebrew']
 
 - name: Verify that PHP is now running from brew package
   shell: which python
@@ -27,4 +25,3 @@
     state: present
     install_options: "appdir={{ homebrew_cask_appdir }}"
   loop: "{{ homebrew_cask_packages }}"
-  tags: ['homebrew']
