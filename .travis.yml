@@ -15,6 +15,6 @@ before_install:
 
 script:
   # Create a dummy vault password file
-  - mkdir -p ~/.ansible && echo "test-password" > ~/.ansible/vault-password
+  - mkdir -p ~/.ansible && echo "test-password" > ~/.ansible/vault_password
   # Run the Ansible test playbook
   - ./bin/provision -t
