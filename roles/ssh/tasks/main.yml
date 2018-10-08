@@ -14,7 +14,7 @@
 # Creates an SSH key for the current user if one doesn't exist
 - name: Create a 2048-bit SSH key for user in ~/.ssh/id_rsa
   user:
-    name: "{{ name_user }}"
+    name: "{{ ansible_ssh_user }}"
     generate_ssh_key: yes
     ssh_key_bits: 2048
     ssh_key_file: "{{ ssh_key_file }}"
