@@ -1,9 +1,11 @@
+# Installs homebrew taps
 - name: Install homebrew taps
   homebrew_tap:
     tap: "{{ item }}"
     state: present
   loop: "{{ homebrew_taps }}"
 
+# Installs homebrew packages
 - name: Install homebrew packages
   homebrew:
     install_options: "{{ item.install_options|default(omit) }}"
@@ -14,11 +16,13 @@
     upgrade_all: "{{ item.upgrade_all|default(omit) }}"
   loop: "{{ homebrew_packages }}"
 
-- name: Verify that PHP is now running from brew package
+# Verifies that PHP is now running from homebrew package
+- name: Verify that PHP is now running from homebrew package
   shell: which python
   register: which_python
   failed_when: 'not "/usr/local/bin/python" in which_python.stdout'
 
+# Installs homebrew cask packages
 - name: Install homebrew cask packages
   homebrew_cask:
     name: "{{ item }}"

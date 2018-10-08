@@ -7,7 +7,7 @@
   args:
     warn: no
 
-# Installs global npm packages
+# Installs global Node packages
 - name: Install global npm packages
   npm:
     name: "{{ item.name|default(item) }}"

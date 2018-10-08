@@ -13,7 +13,6 @@
     mode: 0755
   become: yes
   check_mode: no
-
 - name: Copy file to macOS user picture directory
   copy:
     src: "{{ macos_user_picture_file }}"
@@ -22,31 +21,26 @@
   become: yes
   register: copy_picture_result
   check_mode: no
-
 - name: Read current value of JPEGPhoto for macOS user
   shell: dscl . read /Users/"{{ ansible_ssh_user }}" JPEGPhoto
   register: "dscl_read_jpegphoto_result"
   changed_when: false
   check_mode: no
-
 - name: Read current value of Picture for macOS user
   shell: dscl . read /Users/"{{ ansible_ssh_user }}" Picture
   register: "dscl_read_picture_result"
   changed_when: false
   check_mode: no
-
 - name: Delete HEX picture data for macOS user
   shell: dscl . delete /Users/"{{ ansible_ssh_user }}" JPEGPhoto
   become: yes
   when: '"No such key" not in dscl_read_jpegphoto_result.stderr'
   check_mode: no
-
 - name: Delete existing macOS user account picture
   shell: dscl . delete /Users/"{{ ansible_ssh_user }}" Picture
   become: yes
   when: 'not (macos_user_picture_directory + "/" + macos_user_picture_file_basename in dscl_read_picture_result.stdout and copy_picture_result.changed == false)'
   check_mode: no
-
 - name: Set new macOS user account picture
   shell: dscl . create /Users/"{{ ansible_ssh_user }}" Picture "{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}"
   become: yes
@@ -62,7 +56,6 @@
     mode: 0755
   become: yes
   check_mode: no
-
 - name: Copy file to macOS user desktop background directory
   copy:
     src: "{{ macos_desktop_bg_file }}"
@@ -70,7 +63,6 @@
     mode: 0644
   become: yes
   check_mode: no
-
 - name: Set new macOS user desktop background
   shell: osascript -e 'tell application "Finder" to set desktop picture to "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}" as POSIX file'
   become: yes

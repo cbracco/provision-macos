@@ -1,4 +1,4 @@
-# Installs global gem packages
+# Installs global Ruby packages
 - name: Install global gem packages
   pip:
     name: "{{ item.name|default(item) }}"
