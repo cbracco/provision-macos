@@ -12,6 +12,8 @@ before_install:
   - sudo rm -rf /usr/local/Homebrew
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
+  # Create a dummy vault password file
+  - echo "test-password" > ~/vault-password
 
 script:
   # Run the Ansible test playbook
