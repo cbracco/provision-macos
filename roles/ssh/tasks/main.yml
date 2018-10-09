@@ -11,21 +11,26 @@
     src: "{{ ssh_config_src }}"
     dest: "{{ ssh_config_dest }}"
 
-# Creates an SSH key for the current user if one doesn't exist
-# Requires Ansible Vault decryption
+# Decrypts and copies private SSH key file to ~/.ssh
 # Skip this step during CI testing
-- name: Include encrypted SSH passphrase variable in order to create an SSH key
-  include_vars: vars/passphrase.yml
-  when: not test_mode
+- name: Decrypt private SSH key and copy file to ~/.ssh
+  copy:
+    src: "{{ ssh_private_key_src }}"
+    dest: "{{ ssh_private_key_dest }}"
+    mode: 0600
+    owner: "{{ ansible_ssh_user }}"
+  register: id_rsa
+  when: test_mode is undefined
 
-- name: Create a 4096-bit SSH key for user in ~/.ssh/id_rsa
-  user:
-    name: "{{ ansible_ssh_user }}"
-    generate_ssh_key: yes
-    ssh_key_bits: 4096
-    ssh_key_file: "{{ ssh_key_file }}"
-    ssh_key_comment: "{{ ssh_key_comment }}"
-    ssh_key_passphrase: "{{ ssh_key_passphrase|default(omit) }}"
+# Copies public SSH key file to ~/.ssh
+# Skip this step during CI testing
+- name: Copy public SSH key file to ~/.ssh
+  copy:
+    src: "{{ ssh_public_key_src }}"
+    dest: "{{ ssh_public_key_dest }}"
+    mode: 0600
+    owner: "{{ ansible_ssh_user }}"
+  when: test_mode is undefined
 
 # Adds id_rsa to ssh-agent
 - name: Add id_rsa to ssh-agent
