@@ -42,7 +42,15 @@ It does the following:
 
 ## Testing
 
-This project is continuously tested by [Travis-CI][travis-ci-repo], which runs a slightly modified “test” version of the included Ansible playbook.
+This project is continuously tested by [Travis-CI][travis-ci-repo], which runs a “test” version of the included provision script. It is triggered by passing the `-t` flag:
+
+```bash
+./bin/provision -t
+```
+
+This runs a syntax check on the included Ansible playbook, and a slightly modified “test” version of the included Ansible playbook which installs only the packages necessary in order for tests to pass (this speeds up test builds a bit).
+
+### Syntax Check
 
 In addition, you can check the syntax of the included Ansible playbook by running the following command(s):
 
@@ -50,6 +58,8 @@ In addition, you can check the syntax of the included Ansible playbook by runnin
 cd /path/to/directory
 ansible-playbook playbook.yml --syntax-check
 ```
+
+### Check Mode
 
 You can also perform a “dry run” of the included Ansible playbook by running the following command(s):
 
@@ -60,6 +70,8 @@ ansible-playbook playbook.yml --check
 
 Learn more about [“Check Mode” in Ansible][ansible-check-mode].
 
+### Check Mode w/ Tags
+
 You can also perform a “dry run” of specific roles in the included Ansible playbook by running the following command(s):
 
 ```bash
@@ -67,7 +79,19 @@ cd /path/to/directory
 ansible-playbook playbook.yml --check --tags=homebrew,pip
 ```
 
-Learn more about [Tags in Ansible][ansible-tags].
+This can be useful when working on tasks in a particular role and you only want to check those tasks. Learn more about [Tags in Ansible][ansible-tags].
+
+### Exclude a task from “Test Mode”
+
+If you are writing a new task that you do not want to run in “test mode”, you can exclude it using `when` so the task will only run if `test_mode` variable is defined:
+
+```yml
+- name: task that should not run during tests
+  shell: echo 'do not run me during tests'
+  when: test_mode is defined
+```
+
+This is a technique borrowed from [Jeff Geerling][geerlingguy-testmode]. Thanks Jeff!
 
 ## Credits
 
@@ -100,6 +124,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [dotfiles-mathiasbynens]: https://github.com/mathiasbynens/dotfiles
 [issac-newton-quote]: https://en.wikipedia.org/wiki/Standing_on_the_shoulders_of_giants
 [geerlingguy]: https://github.com/geerlingguy
+[geerlingguy-testmode]: https://www.jeffgeerling.com/blog/2017/ci-ansible-playbooks-which-require-ansible-vault-protected-variables
 [homebrew]: http://brew.sh
 [jeremyltn]: https://github.com/jeremyltn
 [mac-ansible]: https://github.com/adamchainz/mac-ansible
