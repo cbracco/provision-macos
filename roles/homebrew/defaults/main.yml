@@ -4,10 +4,12 @@ homebrew_taps:
 homebrew_packages:
   - ant
   - bash-completion
+  - composer
   - coreutils
   - dnsmasq
   - git
   - git-extras
+  - gnupg
   - htop-osx
   - imagemagick
   - libjpeg
@@ -36,6 +38,7 @@ homebrew_packages:
   - ssh-copy-id
   - watch
   - wget
+  - wp-cli
   - name: yarn
     install_options: without-node
 

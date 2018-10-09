@@ -16,7 +16,15 @@ Clone or download this repository to a local machine:
 git clone https://github.com/cbracco/provision-macos.git
 ```
 
-Execute the included bash script by running the following command(s):
+Create the [Ansible Vault][ansible-vault] passphrase file in the proper location and make sure it contains the correct Ansible Vault passphrase:
+
+```bash
+echo "[REPLACE WITH ANSIBLE VAULT PASSPHRASE]" > ~/.ansible/vault_password
+```
+
+**NOTE:** _The [ssh role][ssh-role] copies a private SSH key file that has been previously encrypted using [Ansible Vault][ansible-vault]. The command above must be run before the provision script in order for Ansible to complete this particular task successfully. An annoying but necessary evil until a better solution comes along._
+
+Finally, execute the included bash script by running the following command(s):
 
 ```bash
 cd /path/to/this/repository
@@ -85,6 +93,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [ansible-check-mode]: https://docs.ansible.com/ansible/2.5/user_guide/playbooks_checkmode.html
 [ansible-role-dotfiles]: https://github.com/geerlingguy/ansible-role-dotfiles
 [ansible-tags]: https://docs.ansible.com/ansible/devel/user_guide/playbooks_tags.html
+[ansible-vault]: https://docs.ansible.com/ansible/2.4/vault.html
 [ansible-via-pip]: https://serverfault.com/a/562350
 [cbracco]: https://chrisbracco.com
 [contributors]: https://github.com/cbracco/provision-localhost/graphs/contributors
@@ -104,6 +113,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [python-via-homebrew]: https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
 [ricbra]: https://github.com/ricbra
 [roderik]: https://github.com/roderik
+[ssh-role]: ./roles/ssh
 [superlumic]: https://github.com/superlumic/superlumic
 [travis-ci-repo]: https://travis-ci.org/cbracco/provision-macos
 [xcode-cli-tools]: https://developer.apple.com/xcode/features

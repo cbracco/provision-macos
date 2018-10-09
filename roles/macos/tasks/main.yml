@@ -78,4 +78,4 @@
 # Skip this step during CI testing
 - name: Enable FileVault full-disk encryption
   shell: sudo fdesetup enable -user "{{ ansible_ssh_user }}"
-  when: (filevault_enabled.stdout != "FileVault is On.") and (not test_mode)
+  when: (filevault_enabled.stdout != "FileVault is On.") and (test_mode is undefined)
