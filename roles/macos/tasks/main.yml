@@ -67,3 +67,15 @@
   shell: osascript -e 'tell application "Finder" to set desktop picture to "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}" as POSIX file'
   become: yes
   check_mode: no
+
+# Checks if FileVault full-disk encryption is enabled
+- name: Check if FileVault full-disk encryption is enabled
+  shell: fdesetup status
+  register: filevault_enabled
+  check_mode: no
+
+# Enables FileVault full-disk encryption
+# Skip this step during CI testing
+- name: Enable FileVault full-disk encryption
+  shell: sudo fdesetup enable -user "{{ ansible_ssh_user }}"
+  when: (filevault_enabled.stdout != "FileVault is On.") and (not test_mode)

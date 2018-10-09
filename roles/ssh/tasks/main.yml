@@ -13,7 +13,8 @@
 
 # Creates an SSH key for the current user if one doesn't exist
 # Requires Ansible Vault decryption
-- name: Only include SSH passphrase when not in test mode.
+# Skip this step during CI testing
+- name: Include encrypted SSH passphrase variable in order to create an SSH key
   include_vars: vars/passphrase.yml
   when: not test_mode
 
