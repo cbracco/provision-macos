@@ -12,4 +12,5 @@ vscode_extensions:
   - formulahendry.auto-rename-tag
   - liximomo.sftp
   - ms-python.python
+  - onecentlin.laravel-blade
   - robinbentley.sass-indented
