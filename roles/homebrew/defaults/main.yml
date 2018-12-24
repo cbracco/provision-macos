@@ -2,12 +2,10 @@ homebrew_taps:
   - homebrew/cask-fonts
 
 homebrew_packages:
-  - ant
   - bash-completion
   - composer
   - coreutils
   - dnsmasq
-  - elasticsearch@5.6
   - git
   - git-extras
   - gnupg
