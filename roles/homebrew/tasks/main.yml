@@ -8,7 +8,7 @@
 # Installs Java before the rest of the homebrew packages
 - name: Install Java via homebrew
   homebrew:
-    - name: java
+    name: java
 
 # Installs homebrew packages
 - name: Install homebrew packages
