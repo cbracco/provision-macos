@@ -6,6 +6,7 @@ homebrew_packages:
   - composer
   - coreutils
   - dnsmasq
+  - elasticsearch@5.4.3
   - git
   - git-extras
   - gnupg
