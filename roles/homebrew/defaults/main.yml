@@ -2,6 +2,7 @@ homebrew_taps:
   - homebrew/cask-fonts
 
 homebrew_packages:
+  - ant
   - bash-completion
   - composer
   - coreutils
