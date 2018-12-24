@@ -1,11 +1,5 @@
 - hosts: all
   connection: local
-  tasks:
-    - debug: msg="Check if script is being run from the correct directory"
-      failed_when: not ansible_env.PWD.endswith('/provision-macos') or not ansible_env.PWD.endswith('/provision-macos-master')
-
-- hosts: all
-  connection: local
   roles:
     - role: homebrew
       tags: ["homebrew"]
