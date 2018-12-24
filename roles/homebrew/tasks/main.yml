@@ -5,6 +5,11 @@
     state: present
   loop: "{{ homebrew_taps }}"
 
+# Installs Java before the rest of the homebrew packages
+- name: Install Java via homebrew
+  homebrew:
+    - name: java
+
 # Installs homebrew packages
 - name: Install homebrew packages
   homebrew:
