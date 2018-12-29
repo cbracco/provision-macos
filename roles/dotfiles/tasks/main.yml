@@ -14,14 +14,14 @@
   args:
     warn: no
 
-# Clones and symlinks dotfiles
-# https://github.com/geerlingguy/ansible-role-dotfiles
-- include_role:
-    name: geerlingguy.dotfiles
-
 # Installs vim plugins non-interactively (do this after dotfiles are setup)
 # https://github.com/junegunn/vim-plug/issues/675
 - name: Install vim plugins non-interactively
   shell: vim +PluginInstall +qall
   args:
     warn: no
+
+# Clones and symlinks dotfiles
+# https://github.com/geerlingguy/ansible-role-dotfiles
+- include_role:
+    name: geerlingguy.dotfiles
