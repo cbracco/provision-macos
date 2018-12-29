@@ -90,7 +90,7 @@ If you are writing a new task that you do not want to run in “test mode”, yo
 ```yml
 - name: task that should not run during tests
   shell: echo 'do not run me during tests'
-  when: test_mode is defined
+  when: not test_mode
 ```
 
 This is a technique borrowed from [Jeff Geerling][geerlingguy-testmode]. Thanks Jeff!

@@ -1,3 +1,11 @@
+# Create ~/.vim/colors directory if it doesn't already exist
+- name: Create ~/.vim/colors directory if it doesn't already exist
+  file:
+    path: "{{ dotfiles_vim_dir }}"
+    state: directory
+    mode: 0755
+    recurse: yes
+
 # Clones and symlinks dotfiles
 # https://github.com/geerlingguy/ansible-role-dotfiles
 - include_role:
