@@ -1,12 +1,27 @@
-# Create ~/.vim/colors directory if it doesn't already exist
-- name: Create ~/.vim/colors directory if it doesn't already exist
+# Creates ~/.vim directories if they don't already exist
+- name: Create ~/.vim directories if they don't already exist
   file:
-    path: "{{ dotfiles_vim_dir }}"
+    path: "{{ item }}"
     state: directory
     mode: 0755
     recurse: yes
+  with_items: "{{ dotfiles_vim_folders }}"
+
+# Installs vim-plug
+# https://github.com/junegunn/vim-plug
+- name: Install vim-plug
+  shell: curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  args:
+    warn: no
 
 # Clones and symlinks dotfiles
 # https://github.com/geerlingguy/ansible-role-dotfiles
 - include_role:
     name: geerlingguy.dotfiles
+
+# Installs vim plugins non-interactively (do this after dotfiles are setup)
+# https://github.com/junegunn/vim-plug/issues/675
+- name: Install vim plugins non-interactively
+  shell: vim +'PlugInstall --sync' +qa
+  args:
+    warn: no

@@ -14,5 +14,9 @@ dotfiles_files:
   - .macos
   - .profile
   - .vimrc
+  - .vim/autoload/lightline/colorscheme/palenight.vim
+  - .vim/autoload/palenight.vim
   - .vim/colors/palenight.vim
-dotfiles_vim_dir: "{{ path_home }}/.vim/colors"
+dotfiles_vim_folders:
+  - "{{ path_home }}/.vim/autoload/lightline/colorscheme"
+  - "{{ path_home }}/.vim/colors"
