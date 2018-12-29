@@ -2,6 +2,9 @@
 # The script clones the nvm repository to ~/.nvm and adds the source line to your
 # profile (~/.bash_profile, ~/.zshrc, ~/.profile, or ~/.bashrc)
 # https://github.com/creationix/nvm
+#
+# Note: Do not have your NVM_DIR variable set before installing, see
+# https://github.com/creationix/nvm/issues/1870
 - name: Install Node Version Manager (nvm)
   shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
   args:
