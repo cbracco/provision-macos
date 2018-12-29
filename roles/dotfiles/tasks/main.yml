@@ -22,6 +22,6 @@
 # Installs vim plugins non-interactively (do this after dotfiles are setup)
 # https://github.com/junegunn/vim-plug/issues/675
 - name: Install vim plugins non-interactively
-  shell: vim +PluginInstall +qall &>/dev/null
+  shell: vim +PluginInstall +qall
   args:
     warn: no
