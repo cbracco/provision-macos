@@ -2,4 +2,5 @@ npm_packages:
   - eslint
   - grunt-cli
   - gulp-cli
+  - http-server
   - yo
