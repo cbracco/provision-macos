@@ -44,6 +44,7 @@ homebrew_packages:
 homebrew_cask_appdir: /Applications
 
 homebrew_cask_packages:
+  - 1password
   - alfred
   - bartender
   - charles
@@ -55,7 +56,6 @@ homebrew_cask_packages:
   - imagealpha
   - imageoptim
   # - moom
-  - onepassword
   - playonmac
   - sequel-pro
   - skype
@@ -63,13 +63,11 @@ homebrew_cask_packages:
   - spotify
   - transmit
   - tunnelblick
-  - unrarx
-  - utorrent
   - vagrant
   # Commented out for now because of this issue:
   # https://github.com/Homebrew/homebrew-cask/issues/39369
   # - virtualbox
-  - vlc
   - visual-studio-code
+  - vlc
   - xquartz
   - zoomus
