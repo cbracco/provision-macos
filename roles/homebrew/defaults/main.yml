@@ -55,7 +55,7 @@ homebrew_cask_packages:
   - google-drive-file-stream
   - imagealpha
   - imageoptim
-  # - moom
+  - moom
   - playonmac
   - sequel-pro
   - skype
