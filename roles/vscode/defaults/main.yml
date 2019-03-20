@@ -14,5 +14,6 @@ vscode_extensions:
   - ms-python.python
   - nathanchapman.javascriptsnippets
   - onecentlin.laravel-blade
+  - pkief.material-icon-theme
   - robinbentley.sass-indented
   - techer.open-in-browser
