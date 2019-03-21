@@ -1,7 +1,3 @@
 # Override zzet.rbenv variables
 rbenv:
   env: user
-
-gem_packages:
-  - bundler
-  - sass
