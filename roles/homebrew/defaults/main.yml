@@ -27,12 +27,12 @@ homebrew_packages:
   - python3
   - qbittorrent
   - rabbitmq
-  - rbenv
+  # - rbenv
   - redis
   - rsync
-  - ruby
-  - ruby-build
-  - ruby-install
+  # - ruby
+  # - ruby-build
+  # - ruby-install
   - siege
   - sqlite3
   - ssh-copy-id

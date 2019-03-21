@@ -1,3 +1,8 @@
+# Install rbenv
+# https://github.com/zzet/ansible-rbenv-role
+- include_role:
+    name: zzet.rbenv
+
 # Installs global Ruby packages
 - name: Install global gem packages
   gem:

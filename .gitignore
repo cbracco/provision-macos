@@ -4,6 +4,7 @@
 ### Ansible ###
 *.retry
 roles/geerlingguy.dotfiles
+roles/zzet.rbenv
 vault_password
 .vault_pass
 
