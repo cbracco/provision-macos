@@ -5,6 +5,7 @@
 *.retry
 roles/geerlingguy.dotfiles
 vault_password
+.vault_pass
 
 ### macOS ###
 # General
