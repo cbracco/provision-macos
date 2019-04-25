@@ -19,3 +19,9 @@
     executable: "{{ item.executable|default(omit) }}"
     global: "{{ item.global|default('yes') }}"
   loop: "{{ npm_packages }}"
+
+# Installs Meteor
+- name: Install Meteor
+  shell: curl https://install.meteor.com/ | sh
+  args:
+    warn: no
