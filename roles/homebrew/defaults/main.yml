@@ -16,7 +16,7 @@ homebrew_packages:
   - libpng
   - mysql56
   - nginx
-  - node
+  # - node
   - openssl
   - postgresql
   - pre-commit
