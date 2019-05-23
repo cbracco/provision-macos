@@ -12,7 +12,7 @@
 
 # Installs latest stable version of node via nvm
 - name: Install latest node version via nvm
-  shell: nvm install node
+  shell: source $HOME/.bashrc && nvm install node
   args:
     warn: no
 
