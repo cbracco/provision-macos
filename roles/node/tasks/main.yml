@@ -6,7 +6,13 @@
 # Note: Do not have your NVM_DIR variable set before installing, see
 # https://github.com/creationix/nvm/issues/1870
 - name: Install Node Version Manager (nvm)
-  shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  args:
+    warn: no
+
+# Installs latest stable version of node via nvm
+- name: Install latest node version via nvm
+  shell: nvm install node
   args:
     warn: no
 
