@@ -62,6 +62,7 @@ homebrew_cask_packages:
   - skype
   - slack
   - spotify
+  - tor-browser
   - transmit
   - tunnelblick
   - vagrant
