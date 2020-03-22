@@ -49,6 +49,7 @@ homebrew_cask_packages:
   - alfred
   - bartender
   - charles
+  - cyberduck
   - docker
   - firefox
   - font-roboto-mono
@@ -64,7 +65,6 @@ homebrew_cask_packages:
   - slack
   - spotify
   - tor-browser
-  - transmit
   - tunnelblick
   - vagrant
   # Commented out for now because of this issue:
