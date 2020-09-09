@@ -23,8 +23,7 @@ homebrew_packages:
   - pv
   - pwgen
   - python
-  - python@2
-  - python3
+  - python@3.8
   - qbittorrent
   - rabbitmq
   # - rbenv
