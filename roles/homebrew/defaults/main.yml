@@ -71,5 +71,6 @@ homebrew_cask_packages:
   # - virtualbox
   - visual-studio-code
   - vlc
+  - whatsapp
   - xquartz
   - zoomus
