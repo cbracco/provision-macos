@@ -74,18 +74,19 @@ fi
 # Install homebrew
 if [[ ! -x /usr/local/bin/brew ]]; then
   printStatus "Brew not detected. Installing and updating homebrew..."
-  # Install via ruby/curl one-liner
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install pyenv via Homebrew and set global Python version
+# Install Python via homebrew
 # https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
 if [[ ! -x /usr/local/bin/python ]]; then
-  printStatus "Python not detected. Installing pyenv via Homebrew and setting global Python version..."
-  brew install pyenv
-  pyenv install -v 3.9.11
-  pyenv global 3.9.11
+  printStatus "Python not detected. Installing Python via homebrew..."
+  brew install python
 fi
+
+# Install and upgrade pip
+# https://stackoverflow.com/a/49748494/100134
+curl https://bootstrap.pypa.io/get-pip.py | sudo python
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
