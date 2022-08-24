@@ -34,4 +34,4 @@
 
 # Adds id_rsa to ssh-agent
 - name: Add id_rsa to ssh-agent
-  shell: "ssh-add -K {{ ssh_key_file }}"
+  shell: "ssh-add {{ ssh_key_file }} --apple-use-keychain"
