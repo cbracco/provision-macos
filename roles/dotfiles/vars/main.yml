@@ -4,16 +4,13 @@ dotfiles_repo_accept_hostkey: no
 dotfiles_repo_local_destination: "{{ path_dotfiles }}"
 dotfiles_home: "{{ path_home }}"
 dotfiles_files:
-  - .bash_aliases
-  - .bash_profile
-  - .bashrc
   - .editorconfig
   - .gitconfig
   - .gitignore_global
   - .inputrc
   - .macos
-  - .profile
   - .vimrc
   - .vim/colors/palenight.vim
+  - .zshrc
 dotfiles_vim_folders:
   - "{{ path_home }}/.vim/colors"

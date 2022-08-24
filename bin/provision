@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Exit on first error
 set -e

@@ -2,7 +2,6 @@ homebrew_taps:
   - homebrew/cask-fonts
 
 homebrew_packages:
-  - bash-completion
   - composer
   - coreutils
   - dnsmasq
@@ -12,26 +11,18 @@ homebrew_packages:
   - htop-osx
   - imagemagick
   - libjpeg
-  - libmemcached
   - libpng
-  - mysql56
+  - mysql@8.0
   - nginx
-  # - node
   - openssl
   - postgresql
   - pre-commit
   - pv
   - pwgen
   - python
-  - python@3.8
-  - qbittorrent
-  - rabbitmq
-  # - rbenv
-  - redis
+  - python@3.9
+  - pyenv
   - rsync
-  # - ruby
-  # - ruby-build
-  # - ruby-install
   - siege
   - sqlite3
   - ssh-copy-id
@@ -53,7 +44,6 @@ homebrew_cask_packages:
   - firefox
   - font-roboto-mono
   - google-chrome
-  - google-drive-file-stream
   - imagealpha
   - imageoptim
   - moom
@@ -64,11 +54,7 @@ homebrew_cask_packages:
   - slack
   - spotify
   - tor-browser
-  - tunnelblick
   - vagrant
-  # Commented out for now because of this issue:
-  # https://github.com/Homebrew/homebrew-cask/issues/39369
-  # - virtualbox
   - visual-studio-code
   - vlc
   - whatsapp

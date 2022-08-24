@@ -6,12 +6,9 @@
     - role: homebrew
       vars:
         homebrew_packages:
-          - python
-          - python@3.8
-          - rbenv
-          - ruby
+          - pyenv
         homebrew_cask_packages:
-          - font-roboto-mono
+          - google-chrome
           - visual-studio-code
     - dotfiles
     - ssh
@@ -19,8 +16,7 @@
     - role: pip
       vars:
         pip_packages:
-          - virtualenv
-          - virtualenvwrapper
+          - pygments
     - role: ruby
       vars:
         gem_packages:

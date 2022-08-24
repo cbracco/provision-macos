@@ -1,5 +1,5 @@
 # Global variables
-name_computer: "CAB-2018-MBP"
+name_computer: "CAB-2021-MBP"
 name_user: "cbracco"
 path_home: "~"
 path_dev: "{{ path_home }}/Development"
