@@ -1,4 +1,4 @@
-# Test playbook is the same as the default, but only installs necessary packages
+# Test playbook is the same as the default, but only installs a few packages
 # for faster builds
 - hosts: all
   connection: local
@@ -6,7 +6,7 @@
     - role: homebrew
       vars:
         homebrew_packages:
-          - pyenv
+          - openssl
         homebrew_cask_packages:
           - google-chrome
           - visual-studio-code

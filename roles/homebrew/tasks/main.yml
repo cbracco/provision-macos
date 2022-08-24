@@ -16,12 +16,6 @@
     upgrade_all: "{{ item.upgrade_all|default(omit) }}"
   loop: "{{ homebrew_packages }}"
 
-# Verifies that Python is now running from homebrew package
-- name: Verify that Python is now running from homebrew package
-  shell: which python
-  register: which_python
-  failed_when: 'not "/usr/bin/python" in which_python.stdout'
-
 # Installs homebrew cask packages
 - name: Install homebrew cask packages
   homebrew_cask:

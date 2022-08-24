@@ -19,8 +19,6 @@ homebrew_packages:
   - pre-commit
   - pv
   - pwgen
-  - python
-  - python@3.9
   - pyenv
   - rsync
   - siege
