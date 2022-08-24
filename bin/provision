@@ -84,7 +84,7 @@ if [[ ! -x /usr/bin/python3 ]]; then
   brew install python
 fi
 
-# Install and upgrade pip
+# Upgrade pip
 # https://stackoverflow.com/a/49748494/100134
 sudo -H pip3 install --upgrade pip
 
