@@ -4,7 +4,7 @@ osx_image: xcode13.4 # macOS Monterey 12.4
 
 before_install:
   # Uninstall existing Homebrew installation.
-  - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+  - NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
   - chmod +x ./uninstall
   - ./uninstall --force
   - sudo rm -rf /usr/local/Homebrew
