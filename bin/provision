@@ -77,22 +77,22 @@ if [[ ! -x /usr/local/bin/brew ]]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install Python via homebrew
+# Install Python if not detected on machine
 # https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
-if [[ ! -x /usr/local/bin/python ]]; then
+if [[ ! -x /usr/bin/python3 ]]; then
   printStatus "Python not detected. Installing Python via homebrew..."
   brew install python
 fi
 
 # Install and upgrade pip
 # https://stackoverflow.com/a/49748494/100134
-curl https://bootstrap.pypa.io/get-pip.py | sudo python
+sudo -H pip3 install --upgrade pip
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
-if ! pip list | grep -F ansible; then
+if ! pip3 list | grep -F ansible; then
   printStatus "Ansible not detected. Installing Ansible via pip..."
-  sudo -H pip install ansible
+  sudo -H pip3 install ansible
 fi
 
 # Install Ansible requirements
