@@ -5,8 +5,9 @@
   shell: "{{ dotfiles_home }}/.macos"
 
 # Sets macOS user picture
-# Old method is commented out for now
+# Commented out for now, no longer working in Monterey 12.4
 # https://github.com/osxstrap/ansible-osx-user-picture/blob/devel/tasks/user_picture.yml
+# 
 # Possible new method: https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
 # - name: Create macOS user picture directory
 #   file:
@@ -50,25 +51,26 @@
 #   check_mode: no
 
 # Sets macOS user desktop background image
+# Commented out for now, no longer working in Monterey 12.4
 # http://osxdaily.com/2015/08/28/set-wallpaper-command-line-macosx/
-- name: Create macOS user desktop background directory
-  file:
-    path: "{{ macos_desktop_bg_directory }}"
-    state: directory
-    mode: 0755
-  become: yes
-  check_mode: no
-- name: Copy file to macOS user desktop background directory
-  copy:
-    src: "{{ macos_desktop_bg_file }}"
-    dest: "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}"
-    mode: 0644
-  become: yes
-  check_mode: no
-- name: Set new macOS user desktop background
-  shell: osascript -e 'tell application "Finder" to set desktop picture to "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}" as POSIX file'
-  become: yes
-  check_mode: no
+# - name: Create macOS user desktop background directory
+#   file:
+#     path: "{{ macos_desktop_bg_directory }}"
+#     state: directory
+#     mode: 0755
+#   become: yes
+#   check_mode: no
+# - name: Copy file to macOS user desktop background directory
+#   copy:
+#     src: "{{ macos_desktop_bg_file }}"
+#     dest: "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}"
+#     mode: 0644
+#   become: yes
+#   check_mode: no
+# - name: Set new macOS user desktop background
+#   shell: osascript -e 'tell application "Finder" to set desktop picture to "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}" as POSIX file'
+#   become: yes
+#   check_mode: no
 
 # Checks if FileVault full-disk encryption is enabled
 - name: Check if FileVault full-disk encryption is enabled
