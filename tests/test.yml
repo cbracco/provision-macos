@@ -17,10 +17,6 @@
       vars:
         pip_packages:
           - pygments
-    - role: ruby
-      vars:
-        gem_packages:
-          - bundler
     - role: node
       vars:
         npm_packages:
