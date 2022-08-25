@@ -6,7 +6,7 @@
 
 ## Requirements
 
-- macOS High Sierra 10.13 or higher
+- macOS Monterey 12.4 or higher
 
 ## Usage
 
