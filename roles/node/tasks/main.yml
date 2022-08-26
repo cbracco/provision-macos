@@ -12,7 +12,7 @@
 
 # Installs latest stable version of node via nvm
 - name: Install latest node version via nvm
-  shell: source $HOME/.zshrc && nvm install node
+  shell: source ~/.zshrc && nvm install node
   args:
     warn: no
 
