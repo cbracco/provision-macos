@@ -15,6 +15,7 @@
   shell: source ~/.zshrc
   args:
     warn: no
+  when: test_mode is undefined
 
 # Installs latest stable version of node via nvm
 - name: Install latest stable version of node via nvm
