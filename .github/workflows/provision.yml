@@ -1,0 +1,25 @@
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+name: provision
+
+on: 
+  push:
+    branches:
+    - master
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  install:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        # macOS Monterey 12
+        os: [macos-12]
+    steps:
+      # Checkout repo so it can be used by the workflow
+      - uses: actions/checkout@v3
+      - name: Create a dummy Ansible vault password file
+        run: mkdir -p ~/.ansible && echo "test-password" > ~/.ansible/vault_password
+      - name: Run the Ansible test playbook
+        run: ./bin/provision -t
