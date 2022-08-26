@@ -10,12 +10,17 @@
   args:
     warn: no
 
-# Reload ~/.zshrc
-- name: Reload ~/.zshrc dotfile
-  shell: source ~/.zshrc
+# Add lines to ~/.zshrc
+- name: Add lines to ~/.zshrc dotfile
+  shell: echo 'export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"' >> ~/.zshrc && echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
   args:
     warn: no
-  when: test_mode is undefined
+  
+# Reload ~/.zshrc
+- name: Reload ~/.zshrc dotfile
+  shell: . ~/.zshrc
+  args:
+    warn: no
 
 # Installs latest stable version of node via nvm
 - name: Install latest stable version of node via nvm
