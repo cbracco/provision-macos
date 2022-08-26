@@ -10,9 +10,15 @@
   args:
     warn: no
 
+# Reload ~/.zshrc
+- name: Reload ~/.zshrc dotfile
+  shell: source ~/.zshrc
+  args:
+    warn: no
+
 # Installs latest stable version of node via nvm
-- name: Install latest node version via nvm
-  shell: source ~/.zshrc && nvm install node
+- name: Install latest stable version of node via nvm
+  shell: nvm install node
   args:
     warn: no
 
