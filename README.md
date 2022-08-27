@@ -2,7 +2,7 @@
 
 ![Build Status](https://github.com/cbracco/provision-macos/actions/workflows/provision.yml/badge.svg)
 
-> Automatically provision a local machine running [macOS High Sierra 10.13][macos-high-sierra] or higher with [Ansible][ansible].
+> Automatically provision a local machine running [macOS Monterey 12.4][macos-monterey] or higher with [Ansible][ansible].
 
 ## Requirements
 
@@ -133,7 +133,7 @@ provision-macos is a project by [@cbracco][cbracco] and its [contributors][contr
 [mathiasbynens]: https://github.com/mathiasbynens
 [mdp-ricbra]: https://github.com/ricbra/mac-dev-playbook
 [mdp-geerlingguy]: https://github.com/geerlingguy/mac-dev-playbook
-[macos-high-sierra]: https://en.wikipedia.org/wiki/MacOS_High_Sierra
+[macos-monterey]: https://en.wikipedia.org/wiki/MacOS_Monterey
 [osxstrap]: https://github.com/osxstrap
 [pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org
