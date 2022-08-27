@@ -14,7 +14,7 @@
 
 # Installs latest stable version of node via nvm
 - name: Install latest stable version of node via nvm
-  shell: nvm install node
+  shell: which nvm && nvm install node
   args:
     warn: no
 
