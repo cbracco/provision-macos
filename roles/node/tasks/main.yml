@@ -16,7 +16,7 @@
 - name: Install latest node version via nvm
   become: true
   become_user: root
-  shell: "source /root/.nvm/nvm.sh && nvm install node && nvm alias default node"                                 
+  shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install node && nvm alias default node"                                 
   args:
     warn: no
     executable: /bin/bash
