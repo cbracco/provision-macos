@@ -14,7 +14,7 @@
 
 # Installs latest stable version of node via nvm
 - name: Install latest node version via nvm
-  shell: . {{ ansible_env.HOME }}/.zshrc && nvm install node
+  shell: "{{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install node"
   args:
     warn: no
 
