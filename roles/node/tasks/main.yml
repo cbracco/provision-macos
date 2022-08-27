@@ -14,9 +14,12 @@
 
 # Installs latest stable version of node via nvm
 - name: Install latest node version via nvm
-  shell: "{{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install node"
+  become: true
+  become_user: root
+  shell: "source /root/.nvm/nvm.sh && nvm install node && nvm alias default node"                                 
   args:
     warn: no
+    executable: /bin/bash
 
 # Installs global Node packages
 - name: Install global npm packages
