@@ -1,24 +1,24 @@
 # provision-macos
 
-[![Build Status](https://travis-ci.org/cbracco/provision-macos.svg?branch=master)][travis-ci-repo]
+![Build Status](https://github.com/cbracco/provision-macos/actions/workflows/provision.yml/badge.svg)
 
 > Automatically provision a local machine running [macOS High Sierra 10.13][macos-high-sierra] or higher with [Ansible][ansible].
 
 ## Requirements
 
-- macOS High Sierra 10.13 or higher
+- macOS Monterey 12.4 or higher
 
 ## Usage
 
 Clone or download this repository to a local machine:
 
-```bash
+```shell
 git clone https://github.com/cbracco/provision-macos.git
 ```
 
 Create the [Ansible Vault][ansible-vault] passphrase file in the proper location and make sure it contains the correct Ansible Vault passphrase:
 
-```bash
+```shell
 mkdir ~/.ansible
 touch ~/.ansible/vault_password
 echo '[REPLACE WITH ANSIBLE VAULT PASSPHRASE]' > ~/.ansible/vault_password
@@ -26,9 +26,9 @@ echo '[REPLACE WITH ANSIBLE VAULT PASSPHRASE]' > ~/.ansible/vault_password
 
 **NOTE:** _The [ssh role][ssh-role] copies a private SSH key file that has been previously encrypted using [Ansible Vault][ansible-vault]. The command above must be run before the provision script in order for Ansible to complete this particular task successfully. An annoying but necessary evil until a better solution comes along._
 
-Finally, execute the included bash script by running the following command(s):
+Finally, execute the included shell script by running the following command(s):
 
-```bash
+```shell
 cd /path/to/this/repository
 ./bin/provision
 ```
@@ -46,7 +46,7 @@ It does the following:
 
 This project is continuously tested by [Travis-CI][travis-ci-repo], which runs a “test” version of the included provision script. It is triggered by passing the `-t` flag:
 
-```bash
+```shell
 ./bin/provision -t
 ```
 
@@ -56,7 +56,7 @@ This runs a syntax check on the included Ansible playbook, and a slightly modifi
 
 In addition, you can check the syntax of the included Ansible playbook by running the following command(s):
 
-```bash
+```shell
 cd /path/to/directory
 ansible-playbook playbook.yml --syntax-check
 ```
@@ -65,7 +65,7 @@ ansible-playbook playbook.yml --syntax-check
 
 You can also perform a “dry run” of the included Ansible playbook by running the following command(s):
 
-```bash
+```shell
 cd /path/to/directory
 ansible-playbook playbook.yml --check
 ```
@@ -76,7 +76,7 @@ Learn more about [“Check Mode” in Ansible][ansible-check-mode].
 
 You can also perform a “dry run” of specific roles in the included Ansible playbook by running the following command(s):
 
-```bash
+```shell
 cd /path/to/directory
 ansible-playbook playbook.yml --check --tags=homebrew,pip
 ```

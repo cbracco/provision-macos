@@ -1,5 +1,5 @@
 vscode_src: "{{ path_dotfiles }}/vscode"
-vscode_dest: "~/Library/Application Support/Code/User"
+vscode_dest: "{{ path_home }}/Library/Application Support/Code/User"
 vscode_files:
   - keybindings.json
   - settings.json

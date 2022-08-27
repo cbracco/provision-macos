@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Exit on first error
 set -e
@@ -74,27 +74,25 @@ fi
 # Install homebrew
 if [[ ! -x /usr/local/bin/brew ]]; then
   printStatus "Brew not detected. Installing and updating homebrew..."
-  # Install via ruby/curl one-liner
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# Install Python via homebrew
+# Install Python if not detected on machine
 # https://github.com/Homebrew/brew/blob/master/docs/Homebrew-and-Python.md
-if [[ ! -x /usr/local/bin/python ]]; then
+if [[ ! -x /usr/bin/python3 ]]; then
   printStatus "Python not detected. Installing Python via homebrew..."
   brew install python
 fi
 
-# Install and upgrade pip
+# Upgrade pip
 # https://stackoverflow.com/a/49748494/100134
-sudo easy_install pip
-sudo -H pip install --upgrade pip
+sudo -H pip3 install --upgrade pip
 
 # Install Ansible via pip
 # https://serverfault.com/a/562350
-if ! pip list | grep -F ansible; then
+if ! pip3 list | grep -F ansible; then
   printStatus "Ansible not detected. Installing Ansible via pip..."
-  sudo -H pip install ansible
+  sudo -H pip3 install ansible
 fi
 
 # Install Ansible requirements

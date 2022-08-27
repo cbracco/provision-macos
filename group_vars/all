@@ -1,6 +1,6 @@
 # Global variables
-name_computer: "CAB-2018-MBP"
+name_computer: "CAB-2021-MBP"
 name_user: "cbracco"
-path_home: "~"
+path_home: "{{ ansible_env.HOME }}"
 path_dev: "{{ path_home }}/Development"
 path_dotfiles: "{{ path_dev }}/dotfiles"

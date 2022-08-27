@@ -1,3 +1,0 @@
-# Override zzet.rbenv variables
-rbenv:
-  env: user

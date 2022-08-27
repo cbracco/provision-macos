@@ -6,15 +6,20 @@
 # Note: Do not have your NVM_DIR variable set before installing, see
 # https://github.com/creationix/nvm/issues/1870
 - name: Install Node Version Manager (nvm)
-  shell: curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+  shell: >
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
   args:
     warn: no
+    creates: "{{ ansible_env.HOME }}/.nvm/nvm.sh"
 
 # Installs latest stable version of node via nvm
 - name: Install latest node version via nvm
-  shell: source $HOME/.bashrc && nvm install node
+  become: true
+  become_user: root
+  shell: "source {{ ansible_env.HOME }}/.nvm/nvm.sh && nvm install node && nvm alias default node"                                 
   args:
     warn: no
+    executable: /bin/bash
 
 # Installs global Node packages
 - name: Install global npm packages
@@ -25,9 +30,3 @@
     executable: "{{ item.executable|default(omit) }}"
     global: "{{ item.global|default('yes') }}"
   loop: "{{ npm_packages }}"
-
-# Installs Meteor
-- name: Install Meteor
-  shell: curl https://install.meteor.com/ | sh
-  args:
-    warn: no

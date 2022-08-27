@@ -1,4 +1,4 @@
-# Test playbook is the same as the default, but only installs necessary packages
+# Test playbook is the same as the default, but only installs a few packages
 # for faster builds
 - hosts: all
   connection: local
@@ -6,12 +6,9 @@
     - role: homebrew
       vars:
         homebrew_packages:
-          - python
-          - python@3.8
-          - rbenv
-          - ruby
+          - openssl
         homebrew_cask_packages:
-          - font-roboto-mono
+          - slack
           - visual-studio-code
     - dotfiles
     - ssh
@@ -19,12 +16,7 @@
     - role: pip
       vars:
         pip_packages:
-          - virtualenv
-          - virtualenvwrapper
-    - role: ruby
-      vars:
-        gem_packages:
-          - bundler
+          - pygments
     - role: node
       vars:
         npm_packages:

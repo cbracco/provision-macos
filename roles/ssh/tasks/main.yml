@@ -18,7 +18,6 @@
     src: "{{ ssh_private_key_src }}"
     dest: "{{ ssh_private_key_dest }}"
     mode: 0600
-    owner: "{{ ansible_ssh_user }}"
   register: id_rsa
   when: test_mode is undefined
 
@@ -29,9 +28,10 @@
     src: "{{ ssh_public_key_src }}"
     dest: "{{ ssh_public_key_dest }}"
     mode: 0600
-    owner: "{{ ansible_ssh_user }}"
   when: test_mode is undefined
 
 # Adds id_rsa to ssh-agent
+# Skip this step during CI testing
 - name: Add id_rsa to ssh-agent
-  shell: "ssh-add -K {{ ssh_key_file }}"
+  shell: "ssh-add {{ ssh_key_file }} --apple-use-keychain"
+  when: test_mode is undefined

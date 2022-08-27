@@ -11,8 +11,6 @@
       tags: ["macos"]
     - role: pip
       tags: ["pip"]
-    - role: ruby
-      tags: ["ruby"]
     - role: node
       tags: ["node"]
     - role: vscode
