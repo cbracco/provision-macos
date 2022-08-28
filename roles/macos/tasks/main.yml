@@ -5,72 +5,72 @@
   shell: "{{ dotfiles_home }}/.macos"
 
 # Sets macOS user picture
-# Commented out for now, no longer working in Monterey 12.4
-# https://github.com/osxstrap/ansible-osx-user-picture/blob/devel/tasks/user_picture.yml
-# 
-# Possible new method: https://apple.stackexchange.com/questions/117530/setting-account-picture-jpegphoto-with-dscl-in-terminal/367667#367667
-# - name: Create macOS user picture directory
-#   file:
-#     path: "{{ macos_user_picture_directory }}"
-#     state: directory
-#     mode: 0755
-#   become: yes
-#   check_mode: no
-# - name: Copy file to macOS user picture directory
-#   copy:
-#     src: "{{ macos_user_picture_file }}"
-#     dest: "{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}"
-#     mode: 0644
-#   become: yes
-#   register: copy_picture_result
-#   check_mode: no
-# - name: Read current value of JPEGPhoto for macOS user
-#   shell: dscl . read /Users/"{{ ansible_user }}" JPEGPhoto
-#   register: "dscl_read_jpegphoto_result"
-#   changed_when: false
-#   check_mode: no
-# - name: Read current value of Picture for macOS user
-#   shell: dscl . read /Users/"{{ ansible_user }}" Picture
-#   register: "dscl_read_picture_result"
-#   changed_when: false
-#   check_mode: no
-# - name: Delete HEX picture data for macOS user
-#   shell: dscl . delete /Users/"{{ ansible_user }}" JPEGPhoto
-#   become: yes
-#   when: '"No such key" not in dscl_read_jpegphoto_result.stderr'
-#   check_mode: no
-# - name: Delete existing macOS user account picture
-#   shell: dscl . delete /Users/"{{ ansible_user }}" Picture
-#   become: yes
-#   when: 'not (macos_user_picture_directory + "/" + macos_user_picture_file_basename in dscl_read_picture_result.stdout and copy_picture_result.changed == false)'
-#   check_mode: no
-# - name: Set new macOS user account picture
-#   shell: dscl . create /Users/"{{ ansible_user }}" Picture "{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}"
-#   become: yes
-#   when: 'not (macos_user_picture_directory + "/" + macos_user_picture_file_basename in dscl_read_picture_result.stdout and copy_picture_result.changed == false)'
-#   check_mode: no
+# https://apple.stackexchange.com/a/367667
+- name: Create macOS user picture directory
+  file:
+    path: "{{ macos_user_picture_directory }}"
+    state: directory
+    mode: 0755
+  become: yes
+  check_mode: no
+- name: Copy file to macOS user picture directory
+  copy:
+    src: "{{ macos_user_picture_file }}"
+    dest: "{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}"
+    mode: 0644
+  become: yes
+  register: copy_picture_result
+  check_mode: no
+- name: Read current value of JPEGPhoto for macOS user
+  shell: dscl . read /Users/"{{ lookup('env', 'USER') }}" JPEGPhoto
+  register: "dscl_read_jpegphoto_result"
+  changed_when: false
+  check_mode: no
+- name: Read current value of Picture for macOS user
+  shell: dscl . read /Users/"{{ lookup('env', 'USER') }}" Picture
+  register: "dscl_read_picture_result"
+  changed_when: false
+  check_mode: no
+- name: Delete HEX picture data for macOS user
+  shell: dscl . delete /Users/"{{ lookup('env', 'USER') }}" JPEGPhoto
+  become: yes
+  when: '"No such key" not in dscl_read_jpegphoto_result.stderr'
+  check_mode: no
+- name: Delete existing macOS user account login picture
+  shell: dscl . delete /Users/"{{ lookup('env', 'USER') }}" Picture
+  become: yes
+  when: 'not (macos_user_picture_directory + "/" + macos_user_picture_file_basename in dscl_read_picture_result.stdout and copy_picture_result.changed == false)'
+  check_mode: no
+- name: Set new macOS user account login picture
+  become: yes
+  when: 'not (macos_user_picture_directory + "/" + macos_user_picture_file_basename in dscl_read_picture_result.stdout and copy_picture_result.changed == false)'
+  check_mode: no
+  shell: | 
+    printf "%s %s \n%s:%s" "'0x0A 0x5C 0x3A 0x2C'" "'dsRecTypeStandard:Users 2 dsAttrTypeStandard:RecordName externalbinary:dsAttrTypeStandard:JPEGPhoto'" "{{ lookup('env', 'USER') }}" "{{ macos_user_picture_directory }}/{{ macos_user_picture_file_basename }}" > "$(mktemp /tmp/{{ lookup('env', 'USER') }}_dsimport.XXXXXX)"
+    /usr/bin/dsimport "$(mktemp /tmp/{{ lookup('env', 'USER') }}_dsimport.XXXXXX)" /Local/Default M
+    rm "$(mktemp /tmp/{{ lookup('env', 'USER') }}_dsimport.XXXXXX)"
 
 # Sets macOS user desktop background image
 # Commented out for now, no longer working in Monterey 12.4
 # http://osxdaily.com/2015/08/28/set-wallpaper-command-line-macosx/
-# - name: Create macOS user desktop background directory
-#   file:
-#     path: "{{ macos_desktop_bg_directory }}"
-#     state: directory
-#     mode: 0755
-#   become: yes
-#   check_mode: no
-# - name: Copy file to macOS user desktop background directory
-#   copy:
-#     src: "{{ macos_desktop_bg_file }}"
-#     dest: "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}"
-#     mode: 0644
-#   become: yes
-#   check_mode: no
-# - name: Set new macOS user desktop background
-#   shell: osascript -e 'tell application "Finder" to set desktop picture to "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}" as POSIX file'
-#   become: yes
-#   check_mode: no
+- name: Create macOS user desktop background directory
+  file:
+    path: "{{ macos_desktop_bg_directory }}"
+    state: directory
+    mode: 0755
+  become: yes
+  check_mode: no
+- name: Copy file to macOS user desktop background directory
+  copy:
+    src: "{{ macos_desktop_bg_file }}"
+    dest: "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}"
+    mode: 0644
+  become: yes
+  check_mode: no
+- name: Set new macOS user desktop background
+  shell: osascript -e 'tell application "Finder" to set desktop picture to "{{ macos_desktop_bg_directory }}/{{ macos_desktop_bg_file_basename }}" as POSIX file'
+  become: yes
+  check_mode: no
 
 # Checks if FileVault full-disk encryption is enabled
 - name: Check if FileVault full-disk encryption is enabled
