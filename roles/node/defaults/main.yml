@@ -3,4 +3,5 @@ npm_packages:
   - grunt-cli
   - gulp-cli
   - http-server
+  - yarn
   - yo

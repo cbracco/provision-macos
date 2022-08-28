@@ -24,11 +24,10 @@ homebrew_packages:
   - siege
   - sqlite3
   - ssh-copy-id
+  - svn # needed to install font-robono-mono
   - watch
   - wget
   - wp-cli
-  - name: yarn
-    install_options: without-node
 
 homebrew_cask_appdir: /Applications
 
@@ -37,7 +36,6 @@ homebrew_cask_packages:
   - adobe-creative-cloud
   - alfred
   - bartender
-  - charles
   - cyberduck
   - docker
   - firefox
@@ -46,7 +44,6 @@ homebrew_cask_packages:
   - imagealpha
   - imageoptim
   - moom
-  - playonmac
   - postman
   - sequel-pro
   - skype
@@ -58,4 +55,3 @@ homebrew_cask_packages:
   - vlc
   - whatsapp
   - xquartz
-  - zoomus
