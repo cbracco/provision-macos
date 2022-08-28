@@ -34,6 +34,7 @@ homebrew_cask_appdir: /Applications
 
 homebrew_cask_packages:
   - 1password
+  - adobe-creative-cloud
   - alfred
   - bartender
   - charles
