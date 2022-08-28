@@ -19,9 +19,9 @@ git clone https://github.com/cbracco/provision-macos.git
 Create the [Ansible Vault][ansible-vault] passphrase file in the proper location and make sure it contains the correct Ansible Vault passphrase:
 
 ```shell
-mkdir ~/.ansible
-touch ~/.ansible/vault_password
-echo '[REPLACE WITH ANSIBLE VAULT PASSPHRASE]' > ~/.ansible/vault_password
+mkdir /path/to/this/repository/.ansible
+touch /path/to/this/repository/.ansible/vault_password
+echo '[REPLACE WITH ANSIBLE VAULT PASSPHRASE]' > /path/to/this/repository/.ansible/vault_password
 ```
 
 **NOTE:** _The [ssh role][ssh-role] copies a private SSH key file that has been previously encrypted using [Ansible Vault][ansible-vault]. The command above must be run before the provision script in order for Ansible to complete this particular task successfully. An annoying but necessary evil until a better solution comes along._
