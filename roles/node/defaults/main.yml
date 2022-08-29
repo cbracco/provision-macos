@@ -1,4 +1,5 @@
 npm_packages:
+  - alfred-fkill
   - eslint
   - grunt-cli
   - gulp-cli
