@@ -28,6 +28,7 @@ homebrew_packages:
   - watch
   - wget
   - wp-cli
+  - yt-dlp
 
 homebrew_cask_appdir: /Applications
 
