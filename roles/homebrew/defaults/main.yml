@@ -45,7 +45,7 @@ homebrew_cask_packages:
   - imagealpha
   - imageoptim
   - moom
-  - plex
+  - plex-media-server
   - postman
   - sequel-pro
   - skype
