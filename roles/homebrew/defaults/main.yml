@@ -42,6 +42,7 @@ homebrew_cask_packages:
   - firefox
   - font-roboto-mono
   - google-chrome
+  - google-drive
   - imagealpha
   - imageoptim
   - moom
