@@ -25,6 +25,7 @@ homebrew_packages:
   - sqlite3
   - ssh-copy-id
   - svn # needed to install font-robono-mono
+  - roots/tap/trellis-cli
   - watch
   - wget
   - wp-cli
